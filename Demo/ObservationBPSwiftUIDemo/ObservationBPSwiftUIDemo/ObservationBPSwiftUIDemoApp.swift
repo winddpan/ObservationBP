@@ -11,7 +11,29 @@ import SwiftUI
 struct ObservationBPSwiftUIDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView(content: {
+                NavigationLink(destination: Page1()) { Text("Page1") }
+            })
+        }
+    }
+}
+
+struct Page1: View {
+    var body: some View {
+        VStack {
+            NavigationLink(destination: DevView()) { Text("DevView") }
+                .padding()
+            NavigationLink(destination: ContentViewA()) { Text("@Observation") }
+                .padding()
+            NavigationLink(destination: ContentViewB()) { Text("ObservableObject") }
+                .padding()
+            NavigationLink(destination: ContentViewC()) { Text("ObservingView") }
+                .padding()
+
+            if #available(iOS 17.0, *) {
+                NavigationLink(destination: ContentViewD()) { Text("iOS17 @Observation") }
+                    .padding()
+            }
         }
     }
 }

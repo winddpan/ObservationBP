@@ -1,0 +1,1151 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "TypeDecl",
+        "name": "ObservationTracking",
+        "printedName": "ObservationTracking",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "_AccessList",
+            "printedName": "_AccessList",
+            "declKind": "Struct",
+            "usr": "s:17ObservationBPImpl0A8TrackingV11_AccessListV",
+            "mangledName": "$s17ObservationBPImpl0A8TrackingV11_AccessListV",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl",
+              "SPIAccessControl"
+            ],
+            "spi_group_names": [
+              "SwiftUI"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "_installTracking",
+            "printedName": "_installTracking(_:willSet:didSet:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationTracking",
+                "printedName": "ObservationBPImpl.ObservationTracking",
+                "usr": "s:17ObservationBPImpl0A8TrackingV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((ObservationBPImpl.ObservationTracking) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ObservationBPImpl.ObservationTracking) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ObservationTracking",
+                        "printedName": "ObservationBPImpl.ObservationTracking",
+                        "usr": "s:17ObservationBPImpl0A8TrackingV"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((ObservationBPImpl.ObservationTracking) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(ObservationBPImpl.ObservationTracking) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ObservationTracking",
+                        "printedName": "ObservationBPImpl.ObservationTracking",
+                        "usr": "s:17ObservationBPImpl0A8TrackingV"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A8TrackingV08_installC0_7willSet03didF0yAC_yACYbcSgAGtFZ",
+            "mangledName": "$s17ObservationBPImpl0A8TrackingV08_installC0_7willSet03didF0yAC_yACYbcSgAGtFZ",
+            "moduleName": "ObservationBPImpl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "SPIAccessControl"
+            ],
+            "spi_group_names": [
+              "SwiftUI"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "_installTracking",
+            "printedName": "_installTracking(_:onChange:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "_AccessList",
+                "printedName": "ObservationBPImpl.ObservationTracking._AccessList",
+                "usr": "s:17ObservationBPImpl0A8TrackingV11_AccessListV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A8TrackingV08_installC0_8onChangeyAC11_AccessListV_yyYbctFZ",
+            "mangledName": "$s17ObservationBPImpl0A8TrackingV08_installC0_8onChangeyAC11_AccessListV_yyYbctFZ",
+            "moduleName": "ObservationBPImpl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "SPIAccessControl"
+            ],
+            "spi_group_names": [
+              "SwiftUI"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationTracking",
+                "printedName": "ObservationBPImpl.ObservationTracking",
+                "usr": "s:17ObservationBPImpl0A8TrackingV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "ObservationBPImpl.ObservationTracking._AccessList?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "_AccessList",
+                    "printedName": "ObservationBPImpl.ObservationTracking._AccessList",
+                    "usr": "s:17ObservationBPImpl0A8TrackingV11_AccessListV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17ObservationBPImpl0A8TrackingVyA2C11_AccessListVSgcfc",
+            "mangledName": "$s17ObservationBPImpl0A8TrackingVyA2C11_AccessListVSgcfc",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl",
+              "SPIAccessControl"
+            ],
+            "spi_group_names": [
+              "SwiftUI"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "cancel",
+            "printedName": "cancel()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A8TrackingV6cancelyyF",
+            "mangledName": "$s17ObservationBPImpl0A8TrackingV6cancelyyF",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "spi_group_names": [
+              "SwiftUI"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:17ObservationBPImpl0A8TrackingV",
+        "mangledName": "$s17ObservationBPImpl0A8TrackingV",
+        "moduleName": "ObservationBPImpl",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl",
+          "RawDocComment"
+        ],
+        "spi_group_names": [
+          "SwiftUI"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Function",
+        "name": "withObservationTracking",
+        "printedName": "withObservationTracking(_:onChange:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "GenericTypeParam",
+            "printedName": "τ_0_0"
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> τ_0_0",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "typeAttributes": [
+              "noescape"
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> () -> ()",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "typeAttributes": [
+              "noescape"
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:17ObservationBPImpl04withA8Tracking_8onChangexxyXE_yyYbcyXKtlF",
+        "mangledName": "$s17ObservationBPImpl04withA8Tracking_8onChangexxyXE_yyYbcyXKtlF",
+        "moduleName": "ObservationBPImpl",
+        "genericSig": "<τ_0_0>",
+        "sugared_genericSig": "<T>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "withObservationTracking",
+        "printedName": "withObservationTracking(_:willSet:didSet:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "GenericTypeParam",
+            "printedName": "τ_0_0"
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> τ_0_0",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "typeAttributes": [
+              "noescape"
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "(ObservationBPImpl.ObservationTracking) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationTracking",
+                "printedName": "ObservationBPImpl.ObservationTracking",
+                "usr": "s:17ObservationBPImpl0A8TrackingV"
+              }
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "(ObservationBPImpl.ObservationTracking) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationTracking",
+                "printedName": "ObservationBPImpl.ObservationTracking",
+                "usr": "s:17ObservationBPImpl0A8TrackingV"
+              }
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:17ObservationBPImpl04withA8Tracking_7willSet03didF0xxyXE_yAA0aD0VYbcyAFYbctlF",
+        "mangledName": "$s17ObservationBPImpl04withA8Tracking_7willSet03didF0xxyXE_yAA0aD0VYbcyAFYbctlF",
+        "moduleName": "ObservationBPImpl",
+        "genericSig": "<τ_0_0>",
+        "sugared_genericSig": "<T>",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl"
+        ],
+        "spi_group_names": [
+          "SwiftUI"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "withObservationTracking",
+        "printedName": "withObservationTracking(_:willSet:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "GenericTypeParam",
+            "printedName": "τ_0_0"
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> τ_0_0",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "typeAttributes": [
+              "noescape"
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "(ObservationBPImpl.ObservationTracking) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationTracking",
+                "printedName": "ObservationBPImpl.ObservationTracking",
+                "usr": "s:17ObservationBPImpl0A8TrackingV"
+              }
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:17ObservationBPImpl04withA8Tracking_7willSetxxyXE_yAA0aD0VYbctlF",
+        "mangledName": "$s17ObservationBPImpl04withA8Tracking_7willSetxxyXE_yAA0aD0VYbctlF",
+        "moduleName": "ObservationBPImpl",
+        "genericSig": "<τ_0_0>",
+        "sugared_genericSig": "<T>",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl"
+        ],
+        "spi_group_names": [
+          "SwiftUI"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Function",
+        "name": "withObservationTracking",
+        "printedName": "withObservationTracking(_:didSet:)",
+        "children": [
+          {
+            "kind": "TypeNominal",
+            "name": "GenericTypeParam",
+            "printedName": "τ_0_0"
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "() -> τ_0_0",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "typeAttributes": [
+              "noescape"
+            ]
+          },
+          {
+            "kind": "TypeFunc",
+            "name": "Function",
+            "printedName": "(ObservationBPImpl.ObservationTracking) -> ()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationTracking",
+                "printedName": "ObservationBPImpl.ObservationTracking",
+                "usr": "s:17ObservationBPImpl0A8TrackingV"
+              }
+            ]
+          }
+        ],
+        "declKind": "Func",
+        "usr": "s:17ObservationBPImpl04withA8Tracking_6didSetxxyXE_yAA0aD0VYbctlF",
+        "mangledName": "$s17ObservationBPImpl04withA8Tracking_6didSetxxyXE_yAA0aD0VYbctlF",
+        "moduleName": "ObservationBPImpl",
+        "genericSig": "<τ_0_0>",
+        "sugared_genericSig": "<T>",
+        "declAttributes": [
+          "AccessControl",
+          "SPIAccessControl"
+        ],
+        "spi_group_names": [
+          "SwiftUI"
+        ],
+        "funcSelfKind": "NonMutating"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "ObservationBPImpl"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Observable",
+        "printedName": "Observable",
+        "declKind": "Protocol",
+        "usr": "s:17ObservationBPImpl10ObservableP",
+        "mangledName": "$s17ObservationBPImpl10ObservableP",
+        "moduleName": "ObservationBPImpl",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ObservationRegistrar",
+        "printedName": "ObservationRegistrar",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationRegistrar",
+                "printedName": "ObservationBPImpl.ObservationRegistrar",
+                "usr": "s:17ObservationBPImpl0A9RegistrarV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17ObservationBPImpl0A9RegistrarVACycfc",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarVACycfc",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "access",
+            "printedName": "access(_:keyPath:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "KeyPath",
+                "printedName": "Swift.KeyPath<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:s7KeyPathC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV6access_7keyPathyx_s03KeyF0Cyxq_GtAA10ObservableRzr0_lF",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV6access_7keyPathyx_s03KeyF0Cyxq_GtAA10ObservableRzr0_lF",
+            "moduleName": "ObservationBPImpl",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : ObservationBPImpl.Observable>",
+            "sugared_genericSig": "<Subject, Member where Subject : ObservationBPImpl.Observable>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "willSet",
+            "printedName": "willSet(_:keyPath:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "KeyPath",
+                "printedName": "Swift.KeyPath<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:s7KeyPathC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV7willSet_7keyPathyx_s03KeyG0Cyxq_GtAA10ObservableRzr0_lF",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV7willSet_7keyPathyx_s03KeyG0Cyxq_GtAA10ObservableRzr0_lF",
+            "moduleName": "ObservationBPImpl",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : ObservationBPImpl.Observable>",
+            "sugared_genericSig": "<Subject, Member where Subject : ObservationBPImpl.Observable>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didSet",
+            "printedName": "didSet(_:keyPath:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "KeyPath",
+                "printedName": "Swift.KeyPath<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:s7KeyPathC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV6didSet_7keyPathyx_s03KeyG0Cyxq_GtAA10ObservableRzr0_lF",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV6didSet_7keyPathyx_s03KeyG0Cyxq_GtAA10ObservableRzr0_lF",
+            "moduleName": "ObservationBPImpl",
+            "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : ObservationBPImpl.Observable>",
+            "sugared_genericSig": "<Subject, Member where Subject : ObservationBPImpl.Observable>",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "withMutation",
+            "printedName": "withMutation(of:keyPath:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_2"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "KeyPath",
+                "printedName": "Swift.KeyPath<τ_0_0, τ_0_1>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ],
+                "usr": "s:s7KeyPathC"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() throws -> τ_0_2",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_2"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV12withMutation2of7keyPath_q0_x_s03KeyH0Cyxq_Gq0_yKXEtKAA10ObservableRzr1_lF",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV12withMutation2of7keyPath_q0_x_s03KeyH0Cyxq_Gq0_yKXEtKAA10ObservableRzr1_lF",
+            "moduleName": "ObservationBPImpl",
+            "genericSig": "<τ_0_0, τ_0_1, τ_0_2 where τ_0_0 : ObservationBPImpl.Observable>",
+            "sugared_genericSig": "<Subject, Member, T where Subject : ObservationBPImpl.Observable>",
+            "declAttributes": [
+              "Rethrows",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationRegistrar",
+                "printedName": "ObservationBPImpl.ObservationRegistrar",
+                "usr": "s:17ObservationBPImpl0A9RegistrarV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV6encode2toys7Encoder_p_tF",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV6encode2toys7Encoder_p_tF",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "==",
+            "printedName": "==(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationRegistrar",
+                "printedName": "ObservationBPImpl.ObservationRegistrar",
+                "usr": "s:17ObservationBPImpl0A9RegistrarV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ObservationRegistrar",
+                "printedName": "ObservationBPImpl.ObservationRegistrar",
+                "usr": "s:17ObservationBPImpl0A9RegistrarV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV2eeoiySbAC_ACtFZ",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV2eeoiySbAC_ACtFZ",
+            "moduleName": "ObservationBPImpl",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV4hash4intoys6HasherVz_tF",
+            "moduleName": "ObservationBPImpl",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17ObservationBPImpl0A9RegistrarV9hashValueSivp",
+            "mangledName": "$s17ObservationBPImpl0A9RegistrarV9hashValueSivp",
+            "moduleName": "ObservationBPImpl",
+            "implicit": true,
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17ObservationBPImpl0A9RegistrarV9hashValueSivg",
+                "mangledName": "$s17ObservationBPImpl0A9RegistrarV9hashValueSivg",
+                "moduleName": "ObservationBPImpl",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:17ObservationBPImpl0A9RegistrarV",
+        "mangledName": "$s17ObservationBPImpl0A9RegistrarV",
+        "moduleName": "ObservationBPImpl",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationTracking.swift",
+      "kind": "Array",
+      "offset": 788,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationTracking.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3323,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationTracking.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3796,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationTracking.swift",
+      "kind": "Dictionary",
+      "offset": 3848,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 807,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2435,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2474,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2688,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2910,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3092,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "Array",
+      "offset": 3450,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "Array",
+      "offset": 3821,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "Array",
+      "offset": 4192,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "Array",
+      "offset": 4566,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "Array",
+      "offset": 4749,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4823,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5099,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6599,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/ObservationRegistrar.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11713,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/Locking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1158,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/wp\/Documents\/ObservationBP\/Sources\/ObservationBPImplProject\/Sources\/Locking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1273,
+      "length": 1,
+      "value": "1"
+    }
+  ]
+}

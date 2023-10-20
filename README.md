@@ -58,22 +58,19 @@ print("'Changed' is printed")
 There is no way to make it as transparent as SwiftUI 5.0 does. But you can use it with `ObservationView`:
 
 ```swift
-struct ContentView: View {
-
+struct ContentView: ObservationView {
   private var person = Person(name: "Tom", age: 12)
 
-  var body: some View {
-    ObservationView {
-      VStack {
-        Text(person.name)
-        Text("\(person.age)")
-        HStack {
-          Button("+") { person.age += 1 }
-          Button("-") { person.age -= 1 }
-        }
+  var observationBody: some View {
+    VStack {
+      Text(person.name)
+      Text("\(person.age)")
+      HStack {
+        Button("+") { person.age += 1 }
+        Button("-") { person.age -= 1 }
       }
-      .padding()
     }
+    .padding()
   }
 }
 ```
