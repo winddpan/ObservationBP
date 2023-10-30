@@ -31,11 +31,12 @@ let package = Package(
             ]
         ),
 
-        .binaryTarget(name: "ObservationBPFramework",
-                      path: "Sources/ObservationBPFramework/ObservationBPImpl.xcframework"),
+        .binaryTarget(name: "ObservationBPLock",
+                      path: "Sources/ObservationBPLock/ObservationBPLock.xcframework"),
 
         // Library that exposes a macro as part of its API, which is used in client programs.
-        .target(name: "ObservationBP", dependencies: ["ObservationBPFramework", "ObservationBPMacros"]),
+        .target(name: "ObservationBP", dependencies: ["ObservationBPLock",
+                                                      "ObservationBPMacros"]),
 
         // A test target used to develop the macro implementation.
         .testTarget(

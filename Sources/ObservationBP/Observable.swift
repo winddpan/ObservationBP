@@ -9,11 +9,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-import ObservationBPImpl
 import SwiftUI
 
-public typealias Observable = ObservationBPImpl.Observable
-public typealias ObservationRegistrar = ObservationBPImpl.ObservationRegistrar
+public protocol Observable {}
 
 #if $Macros && hasAttribute(attached)
 

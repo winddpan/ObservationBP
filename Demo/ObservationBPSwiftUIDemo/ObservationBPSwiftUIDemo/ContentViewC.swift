@@ -18,13 +18,14 @@ struct ContentViewC: View {
     )
 
     var body: some View {
-        ObservingView {
+        _$ObservingView {
             if #available(iOS 15.0, *) {
                 let _ = Self._printChanges()
             }
             VStack {
                 Text(person.name)
                 Text("\(person.age)")
+                Text(person.list.description)
 
                 VStack {
                     PersonNameView(person: person)
@@ -36,6 +37,7 @@ struct ContentViewC: View {
                     Button("+") { person.age += 1 }
                     Button("-") { person.age -= 1 }
                     Button("name") { person.name += "@" }
+                    Button("list") { person.list = person.list.shuffled() }
                 }
             }
             .padding()
@@ -52,7 +54,7 @@ private struct PersonNameView: View {
     }
 
     var body: some View {
-        ObservingView {
+        _$ObservingView {
             if #available(iOS 15.0, *) {
                 let _ = Self._printChanges()
             }
@@ -69,7 +71,7 @@ private struct PersonAgeView: View {
 
     var body: some View {
         if Bool.random() {
-            ObservingView {
+            _$ObservingView {
                 if #available(iOS 15.0, *) {
                     let _ = Self._printChanges()
                 }
@@ -77,7 +79,7 @@ private struct PersonAgeView: View {
                     .background(Color.red)
             }
         } else {
-            ObservingView {
+            _$ObservingView {
                 if #available(iOS 15.0, *) {
                     let _ = Self._printChanges()
                 }

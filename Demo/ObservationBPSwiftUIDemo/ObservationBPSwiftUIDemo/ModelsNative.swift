@@ -12,6 +12,7 @@ import Observation
 @Observable final class Person17 {
     var name: String
     var age: Int
+    var list: [String] = []
 
     deinit {
         print("Person17 deinit: \(name)")
@@ -20,6 +21,12 @@ import Observation
     init(name: String, age: Int) {
         self.name = name
         self.age = age
+
+        var list: [Int] = []
+        for _ in 0 ..< 5 {
+            list.append(Int.random(in: 1 ... 1000))
+        }
+        self.list = list.map { "\($0)" }
     }
 }
 

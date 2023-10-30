@@ -12,6 +12,7 @@ import SwiftUI
 @Observable final class Person {
     var name: String
     var age: Int
+    var list: [String] = []
 
     deinit {
         print("Person deinit: \(name)")
@@ -20,6 +21,12 @@ import SwiftUI
     init(name: String, age: Int) {
         self.name = name
         self.age = age
+
+        var list: [Int] = []
+        for _ in 0 ..< 5 {
+            list.append(Int.random(in: 1 ... 1000))
+        }
+        self.list = list.map { "\($0)" }
     }
 }
 
@@ -34,7 +41,6 @@ final class Clz {
         print("Clz deinit: \(name)")
     }
 }
-
 
 final class OBClz: ObservableObject {
     var name: String

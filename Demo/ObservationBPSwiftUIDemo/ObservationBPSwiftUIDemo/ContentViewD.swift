@@ -22,6 +22,7 @@ struct ContentViewD: View {
         return VStack {
             Text(person.name)
             Text("\(person.age)")
+            Text(person.list.description)
 
             VStack {
                 PersonNameView(person: person)
@@ -33,6 +34,8 @@ struct ContentViewD: View {
                 Button("+") { person.age += 1 }
                 Button("-") { person.age -= 1 }
                 Button("name") { person.name += "@" }
+                Button("list") { person.list = person.list.shuffled() }
+
             }
         }
         .padding()

@@ -1,0 +1,368 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "TypeDecl",
+        "name": "_ThreadLocal",
+        "printedName": "_ThreadLocal",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "value",
+            "printedName": "value",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.UnsafeMutableRawPointer?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UnsafeMutableRawPointer",
+                    "printedName": "Swift.UnsafeMutableRawPointer",
+                    "usr": "s:Sv"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17ObservationBPLock12_ThreadLocalO5valueSvSgvpZ",
+            "mangledName": "$s17ObservationBPLock12_ThreadLocalO5valueSvSgvpZ",
+            "moduleName": "ObservationBPLock",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.UnsafeMutableRawPointer?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UnsafeMutableRawPointer",
+                        "printedName": "Swift.UnsafeMutableRawPointer",
+                        "usr": "s:Sv"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17ObservationBPLock12_ThreadLocalO5valueSvSgvgZ",
+                "mangledName": "$s17ObservationBPLock12_ThreadLocalO5valueSvSgvgZ",
+                "moduleName": "ObservationBPLock",
+                "static": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.UnsafeMutableRawPointer?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UnsafeMutableRawPointer",
+                        "printedName": "Swift.UnsafeMutableRawPointer",
+                        "usr": "s:Sv"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17ObservationBPLock12_ThreadLocalO5valueSvSgvsZ",
+                "mangledName": "$s17ObservationBPLock12_ThreadLocalO5valueSvSgvsZ",
+                "moduleName": "ObservationBPLock",
+                "static": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17ObservationBPLock12_ThreadLocalO5valueSvSgvMZ",
+                "mangledName": "$s17ObservationBPLock12_ThreadLocalO5valueSvSgvMZ",
+                "moduleName": "ObservationBPLock",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:17ObservationBPLock12_ThreadLocalO",
+        "mangledName": "$s17ObservationBPLock12_ThreadLocalO",
+        "moduleName": "ObservationBPLock",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "_ManagedCriticalState",
+        "printedName": "_ManagedCriticalState",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "_ManagedCriticalState",
+                "printedName": "ObservationBPLock._ManagedCriticalState<τ_0_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:17ObservationBPLock21_ManagedCriticalStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ManagedBuffer",
+                "printedName": "Swift.ManagedBuffer<τ_0_0, Swift.UnsafeRawPointer>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UnsafeRawPointer",
+                    "printedName": "Swift.UnsafeRawPointer",
+                    "usr": "s:SV"
+                  }
+                ],
+                "usr": "s:s13ManagedBufferC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17ObservationBPLock21_ManagedCriticalStateVyACyxGs0C6BufferCyxSVGcfc",
+            "mangledName": "$s17ObservationBPLock21_ManagedCriticalStateVyACyxGs0C6BufferCyxSVGcfc",
+            "moduleName": "ObservationBPLock",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<State>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "_ManagedCriticalState",
+                "printedName": "ObservationBPLock._ManagedCriticalState<τ_0_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:17ObservationBPLock21_ManagedCriticalStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:17ObservationBPLock21_ManagedCriticalStateVyACyxGxcfc",
+            "mangledName": "$s17ObservationBPLock21_ManagedCriticalStateVyACyxGxcfc",
+            "moduleName": "ObservationBPLock",
+            "genericSig": "<τ_0_0>",
+            "sugared_genericSig": "<State>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "withCriticalRegion",
+            "printedName": "withCriticalRegion(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_1_0"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(inout τ_0_0) throws -> τ_1_0",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_1_0"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:17ObservationBPLock21_ManagedCriticalStateV04withD6Regionyqd__qd__xzKXEKlF",
+            "mangledName": "$s17ObservationBPLock21_ManagedCriticalStateV04withD6Regionyqd__qd__xzKXEKlF",
+            "moduleName": "ObservationBPLock",
+            "genericSig": "<τ_0_0, τ_1_0>",
+            "sugared_genericSig": "<State, R>",
+            "declAttributes": [
+              "Rethrows",
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ObjectIdentifier",
+                "printedName": "Swift.ObjectIdentifier",
+                "usr": "s:SO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:17ObservationBPLock21_ManagedCriticalStateV2idSOvp",
+            "mangledName": "$s17ObservationBPLock21_ManagedCriticalStateV2idSOvp",
+            "moduleName": "ObservationBPLock",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ObjectIdentifier",
+                    "printedName": "Swift.ObjectIdentifier",
+                    "usr": "s:SO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:17ObservationBPLock21_ManagedCriticalStateV2idSOvg",
+                "mangledName": "$s17ObservationBPLock21_ManagedCriticalStateV2idSOvg",
+                "moduleName": "ObservationBPLock",
+                "genericSig": "<τ_0_0>",
+                "sugared_genericSig": "<State>",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:17ObservationBPLock21_ManagedCriticalStateV",
+        "mangledName": "$s17ObservationBPLock21_ManagedCriticalStateV",
+        "moduleName": "ObservationBPLock",
+        "genericSig": "<τ_0_0>",
+        "sugared_genericSig": "<State>",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Identifiable",
+            "printedName": "Identifiable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ID",
+                "printedName": "ID",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ObjectIdentifier",
+                    "printedName": "Swift.ObjectIdentifier",
+                    "usr": "s:SO"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12IdentifiableP",
+            "mangledName": "$ss12IdentifiableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/wp\/development\/ObservationBP\/Sources\/ObservationBPLockProject\/ObservationBPLock\/Locking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1166,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/wp\/development\/ObservationBP\/Sources\/ObservationBPLockProject\/ObservationBPLock\/Locking.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1285,
+      "length": 1,
+      "value": "1"
+    }
+  ]
+}

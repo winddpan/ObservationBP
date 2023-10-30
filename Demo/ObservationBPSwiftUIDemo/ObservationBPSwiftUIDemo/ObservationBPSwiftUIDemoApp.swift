@@ -21,6 +21,8 @@ struct ObservationBPSwiftUIDemoApp: App {
 struct Page1: View {
     var body: some View {
         VStack {
+            NavigationLink(destination: RrefreshScrollTestView()) { Text("RrefreshScrollTestView") }
+                .padding()
             NavigationLink(destination: DevView()) { Text("DevView") }
                 .padding()
             NavigationLink(destination: ContentViewA()) { Text("@Observation") }
