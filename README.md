@@ -2,7 +2,7 @@
 ![Demo](https://github.com/winddpan/ObservationBP/blob/master/Demo/ObservationBPSwiftUIDemo/Demo.gif?raw=true)
 
 ## Sample
-```
+``` Swift
 import ObservationBP
 import SwiftUI
 
