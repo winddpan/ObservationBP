@@ -13,6 +13,8 @@ import SwiftUI
     var name: String
     var age: Int
     var list: [String] = []
+    var testGet: String? = UUID().uuidString
+    let testGet2: String = UUID().uuidString
 
     deinit {
         print("Person deinit: \(name)")
@@ -22,6 +24,9 @@ import SwiftUI
         self.name = name
         self.age = age
 
+        print("Person init: \(name)")
+
+        
         var list: [Int] = []
         for _ in 0 ..< 5 {
             list.append(Int.random(in: 1 ... 1000))

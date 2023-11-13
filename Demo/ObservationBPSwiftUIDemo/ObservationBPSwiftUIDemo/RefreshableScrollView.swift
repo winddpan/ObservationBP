@@ -15,17 +15,14 @@ fileprivate struct RefreshConfig {
 }
 
 /// A custom scroll view that supports pull to refresh using the `refreshable()` modifier.
-public struct RefreshableScrollView<Data, Content: View>: View {
+public struct RefreshableScrollView<Content: View>: View {
     private var config: RefreshConfig
-    private let data: Data
     @ViewBuilder let content: () -> Content
 
     public init(
-        _ data: Data,
         refreshControl: @autoclosure @escaping () -> UIRefreshControl = .init(),
         @ViewBuilder content: @escaping () -> Content
     ) {
-        self.data = data
         config = RefreshConfig(refreshControl: refreshControl)
         self.content = content
     }

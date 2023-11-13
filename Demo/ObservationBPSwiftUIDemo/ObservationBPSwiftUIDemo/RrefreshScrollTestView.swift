@@ -32,14 +32,18 @@ import SwiftUI
     }
 }
 
-struct RrefreshScrollTestView: ObservationView {
-    @State private var wrapper = ListWrapper()
+struct RrefreshScrollTestView: View {
+    @Observing private var wrapper = ListWrapper()
 
-    var observationBody: some View {
+    var body: some View {
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
+        }
+
         ZStack {
-            Color.green
+            Color.green.ignoresSafeArea()
 
-            RefreshableScrollView(wrapper.list) {
+            RefreshableScrollView {
                 LazyVStack {
                     ForEach(wrapper.list, id: \.self) { item in
                         Text(item)
@@ -74,39 +78,12 @@ struct RrefreshScrollTestView: ObservationView {
         }
         .ignoresSafeArea(edges: [])
     }
-
-    var observationBody2: some View {
-        ZStack {
-            Color.green
-
-            LazyVStack {
-                ForEach(wrapper.list, id: \.self) { item in
-                    Text(item)
-                        .padding(5)
-                }
-            }
-            .padding(12)
-
-            Text(wrapper.title)
-                .padding()
-                .background(Color.yellow)
-                .onTapGesture {
-                    Task {
-                        do {
-                            try await wrapper.refresh()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }
-        }
-    }
 }
 
-private struct ConstView: ObservationView {
+private struct ConstView: View {
     @State var wrapper: ListWrapper
 
-    var observationBody: some View {
+    var body: some View {
         if #available(iOS 15.0, *) {
             let _ = Self._printChanges()
         }

@@ -12,7 +12,9 @@ struct ObservationBPSwiftUIDemoApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView(content: {
-                NavigationLink(destination: Page1()) { Text("Page1") }
+                NavigationLink(destination: LazyView { Page1() }) {
+                    Text("Page1")
+                }
             })
         }
     }
@@ -21,19 +23,19 @@ struct ObservationBPSwiftUIDemoApp: App {
 struct Page1: View {
     var body: some View {
         VStack {
-            NavigationLink(destination: RrefreshScrollTestView()) { Text("RrefreshScrollTestView") }
+            NavigationLink(destination: LazyView { RrefreshScrollTestView() }) { Text("RrefreshScrollTestView") }
                 .padding()
-            NavigationLink(destination: DevView()) { Text("DevView") }
+            NavigationLink(destination: LazyView { DevView() }) { Text("DevView") }
                 .padding()
-            NavigationLink(destination: ContentViewA()) { Text("@Observation") }
+
+            NavigationLink(destination: LazyView { ObservedObjectTest() }) { Text("ObservedObjectTest") }
                 .padding()
-            NavigationLink(destination: ContentViewB()) { Text("ObservableObject") }
-                .padding()
-            NavigationLink(destination: ContentViewC()) { Text("ObservingView") }
+
+            NavigationLink(destination: LazyView { ContentViewB() }) { Text("<iOS17 ObservableObject") }
                 .padding()
 
             if #available(iOS 17.0, *) {
-                NavigationLink(destination: ContentViewD()) { Text("iOS17 @Observation") }
+                NavigationLink(destination: LazyView { ContentViewD() }) { Text("iOS17 @Observation") }
                     .padding()
             }
         }

@@ -9,8 +9,9 @@ import ObservationBP
 import SwiftUI
 
 struct DevView: View {
-    private var person = Person(name: "Tom", age: 12)
-    @StateObject private var ref = Ref()
+    @Observing
+    private var person = DevPerson(name: "Tom", age: 12)
+
     @State private var randomColor = Color(
         red: .random(in: 0 ... 1),
         green: .random(in: 0 ... 1),
@@ -25,8 +26,22 @@ struct DevView: View {
             Text(person.name)
             Text("\(person.age)")
 
+            TextField("123", text: $person.name)
+                .background(Color.yellow)
+
+            LazyView {
+                VStack {
+                    Text("(lazy)" + person.name)
+                        .background(Color.yellow)
+
+                    Text("(lazy)" + "\(person.age)")
+                        .background(Color.yellow)
+                }
+            }
+
             VStack {
                 PersonNameView(person: person)
+                PersonName2View(person: person)
                 PersonAgeView(person: person)
             }
             .padding()
@@ -39,59 +54,15 @@ struct DevView: View {
         }
         .padding()
         .background(randomColor)
-        .foregroundColor(ref.randomColor)
-    }
-}
-
-private extension DevView {
-    struct Impl: View {
-        private var person = Person(name: "Tom", age: 12)
-        @StateObject private var ref = Ref()
-        @State private var randomColor = Color(
-            red: .random(in: 0 ... 1),
-            green: .random(in: 0 ... 1),
-            blue: .random(in: 0 ... 1)
-        )
-
-        var body: some View {
-            _$ObservingView {
-                if #available(iOS 15.0, *) {
-                    let _ = Self._printChanges()
-                }
-                VStack {
-                    Text(person.name)
-                    Text("\(person.age)")
-
-                    VStack {
-                        PersonNameView(person: person)
-                        PersonAgeView(person: person)
-                    }
-                    .padding()
-
-                    HStack {
-                        Button("+") {
-                            person.age += 1
-                        }
-                        Button("-") {
-                            person.age -= 1
-                        }
-                        Button("name") {
-                            person.name += "@"
-                        }
-                    }
-                }
-                .padding()
-                .background(randomColor)
-                .foregroundColor(ref.randomColor)
-            }
-        }
     }
 }
 
 private struct PersonNameView: View {
-    @State private var person: Person
-    fileprivate init(person: Person) {
-        self.person = person
+    @Observing
+    var person: DevPerson
+
+    init(person: DevPerson) {
+        _person = .init(wrappedValue: person)
     }
 
     var body: some View {
@@ -102,90 +73,38 @@ private struct PersonNameView: View {
     }
 }
 
-private extension PersonNameView {
-    private struct Impl: View {
-        @State private var person: Person
-        fileprivate init(person: Person) {
-            self.person = person
-        }
+private struct PersonName2View: View {
+    @Observing
+    var person: DevPerson
 
-        var body: some View {
-            _$ObservingView {
-                if #available(iOS 15.0, *) {
-                    let _ = Self._printChanges()
-                }
-                Text(person.name)
-            }
-        }
-    }
-}
-
-private struct PersonAgeView: View {
-    @State private var person: Person
-    fileprivate init(person: Person) {
-        self.person = person
+    init(person: DevPerson) {
+        _person = .init(wrappedValue: person)
     }
 
     var body: some View {
         if #available(iOS 15.0, *) {
             let _ = Self._printChanges()
         }
-        if Bool.random() {
-            return Text("\(person.age)")
-                .background(Color.red)
-        } else {
-            return Text("\(person.age) 999")
-                .background(Color.blue)
-        }
+        TextField("name", text: $person.name)
     }
 }
 
-private extension PersonAgeView {
-    private struct Impl: View {
-        @State private var person: Person
-        fileprivate init(person: Person) {
-            self.person = person
-            print("init", self)
-        }
-
-        var body: some View {
-            if Bool.random() {
-                _$ObservingView {
-                    if #available(iOS 15.0, *) {
-                        let _ = Self._printChanges()
-                    }
-                    Text("\(person.age)")
-                        .background(Color.red)
-                }
-            } else {
-                _$ObservingView {
-                    if #available(iOS 15.0, *) {
-                        let _ = Self._printChanges()
-                    }
-                    Text("\(person.age) 999")
-                        .background(Color.blue)
-                }
-            }
-        }
+private struct PersonAgeView: View {
+    @Observing var person: DevPerson
+    init(person: DevPerson) {
+        _person = .init(wrappedValue: person)
     }
 
-    @MainActor
-//    @ViewBuilder
-    private var observationBody: Impl {
-        var mutatingSelf = self
-        let ptr = withUnsafePointer(to: &mutatingSelf) {
-            UnsafeRawPointer($0)
+    var body: some View {
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
         }
-        let ret = ptr.assumingMemoryBound(to: Impl.self)
-
-//        let ptr2 = withUnsafePointer(to: &ret) {
-//            UnsafeRawPointer($0)
-//        }
-//        let ret = ptr.load(as: Impl.self)
-//
-        print("observationBody", ptr, ret)
-//
-        return ret.pointee
+        Text("\(person.age)")
+            .background(Color(
+                red: .random(in: 0 ... 1),
+                green: .random(in: 0 ... 1),
+                blue: .random(in: 0 ... 1)
+            ))
     }
 }
 
@@ -193,88 +112,64 @@ private extension PersonAgeView {
     DevView()
 }
 
-extension DevView {
-    @ViewBuilder
-    @MainActor
-    private var observationBody: Impl {
-        var mutatingSelf = self
-        let ptr = withUnsafePointer(to: &mutatingSelf) {
-            UnsafeRawPointer($0)
-        }
-        ptr.assumingMemoryBound(to: Impl.self).pointee
+typealias DevPerson = Person
 
-//        ptr.load(as: Impl.self)
-    }
+/*
+ final class DevPerson {
+     private var _name: String
+     var name: String {
+         init(initialValue) initializes(_name) {
+             _name = initialValue
+         }
+         get {
+             print("    access: name", _name)
+             access(keyPath: \.name)
+             return _name
+         }
+         set {
+             withMutation(keyPath: \.name) {
+                 _name = newValue
+             }
+         }
+     }
 
-    static func _makeView(view: SwiftUI._GraphValue<Self>, inputs: SwiftUI._ViewInputs)
-        -> SwiftUI._ViewOutputs {
-        Impl._makeView(view: view[\.observationBody], inputs: inputs)
-    }
+     private var _age: Int
+     var age: Int {
+         init(initialValue) initializes(_age) {
+             _age = initialValue
+         }
+         get {
+             print("    access: age", _age)
+             access(keyPath: \.age)
+             return _age
+         }
+         set {
+             withMutation(keyPath: \.age) {
+                 _age = newValue
+             }
+         }
+     }
 
-    static func _makeViewList(view: SwiftUI._GraphValue<Self>, inputs: SwiftUI._ViewListInputs)
-        -> SwiftUI._ViewListOutputs {
-        Impl._makeViewList(view: view[\.observationBody], inputs: inputs)
-    }
+     init(name: String, age: Int) {
+         self.name = name
+         self.age = age
+     }
 
-    static func _viewListCount(inputs: SwiftUI._ViewListCountInputs) -> Int? {
-        Impl._viewListCount(inputs: inputs)
-    }
-}
+     @ObservationIgnored private let _$observationRegistrar = ObservationBP.ObservationRegistrar()
 
-var cache1: Any?
-var cache2: Any?
-var cache3: Any?
+     nonisolated func access<Member>(
+         keyPath: KeyPath<DevPerson, Member>
+     ) {
+         _$observationRegistrar.access(self, keyPath: keyPath)
+     }
 
-extension PersonNameView {
-    @ViewBuilder
-    @MainActor
-    private var observationBody: Impl {
-        var mutatingSelf = self
-        let ptr = withUnsafePointer(to: &mutatingSelf) {
-            UnsafeRawPointer($0)
-        }
-        ptr.assumingMemoryBound(to: Impl.self).pointee
+     nonisolated func withMutation<Member, T>(
+         keyPath: KeyPath<DevPerson, Member>,
+         _ mutation: () throws -> T
+     ) rethrows -> T {
+         try _$observationRegistrar.withMutation(of: self, keyPath: keyPath, mutation)
+     }
+ }
+  */
 
-//        ptr.load(as: Impl.self)
-    }
-
-    static func _makeView(view: SwiftUI._GraphValue<Self>, inputs: SwiftUI._ViewInputs)
-        -> SwiftUI._ViewOutputs {
-        Impl._makeView(view: view[\.observationBody], inputs: inputs)
-    }
-
-    static func _makeViewList(view: SwiftUI._GraphValue<Self>, inputs: SwiftUI._ViewListInputs)
-        -> SwiftUI._ViewListOutputs {
-        Impl._makeViewList(view: view[\.observationBody], inputs: inputs)
-    }
-
-    static func _viewListCount(inputs: SwiftUI._ViewListCountInputs) -> Int? {
-        Impl._viewListCount(inputs: inputs)
-    }
-}
-
-extension PersonAgeView {
-//    @ViewBuilder
-//    @MainActor
-//    private var observationBody: Impl {
-//        var mutatingSelf = self
-//        let ptr = withUnsafePointer(to: &mutatingSelf) {
-//            UnsafeRawPointer($0)
-//        }
-//        ptr.load(as: Impl.self)
-//    }
-
-    static func _makeView(view: SwiftUI._GraphValue<Self>, inputs: SwiftUI._ViewInputs)
-        -> SwiftUI._ViewOutputs {
-        Impl._makeView(view: view[\.observationBody], inputs: inputs)
-    }
-
-    static func _makeViewList(view: SwiftUI._GraphValue<Self>, inputs: SwiftUI._ViewListInputs)
-        -> SwiftUI._ViewListOutputs {
-        Impl._makeViewList(view: view[\.observationBody], inputs: inputs)
-    }
-
-    static func _viewListCount(inputs: SwiftUI._ViewListCountInputs) -> Int? {
-        Impl._viewListCount(inputs: inputs)
-    }
-}
+extension DevPerson: Observable {}

@@ -64,15 +64,14 @@ private struct PersonAgeView: View {
 
     var body: some View {
         if #available(iOS 15.0, *) {
-            Self._printChanges()
+            let _ = Self._printChanges()
         }
-        if Bool.random() {
-            return Text("\(person.age)")
-                .background(Color.red)
-        } else {
-            return Text("\(person.age) 999")
-                .background(Color.blue)
-        }
+        Text("\(person.age)")
+            .background(Color(
+                red: .random(in: 0 ... 1),
+                green: .random(in: 0 ... 1),
+                blue: .random(in: 0 ... 1)
+            ))
     }
 }
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D172801F2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172801E2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift */; };
-		D17280212A7C010700CDC50B /* ContentViewA.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17280202A7C010700CDC50B /* ContentViewA.swift */; };
 		D17280232A7C010900CDC50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17280222A7C010900CDC50B /* Assets.xcassets */; };
 		D17280262A7C010900CDC50B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17280252A7C010900CDC50B /* Preview Assets.xcassets */; };
 		D17280302A7C010900CDC50B /* ObservationBPSwiftUIDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172802F2A7C010900CDC50B /* ObservationBPSwiftUIDemoTests.swift */; };
@@ -16,13 +15,14 @@
 		D172803C2A7C010900CDC50B /* ObservationBPSwiftUIDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172803B2A7C010900CDC50B /* ObservationBPSwiftUIDemoUITestsLaunchTests.swift */; };
 		E4DCE0AA2AE18B3600DDBBC9 /* DevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */; };
 		E4FDB4512AE1726900D755C3 /* ContentViewB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDB4502AE1726900D755C3 /* ContentViewB.swift */; };
-		E4FDB4552AE175F900D755C3 /* ContentViewC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDB4542AE175F900D755C3 /* ContentViewC.swift */; };
 		E4FDB4572AE177C500D755C3 /* ContentViewD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDB4562AE177C500D755C3 /* ContentViewD.swift */; };
 		F791ABA72AE26D5B0008B7F5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F791ABA62AE26D5B0008B7F5 /* Models.swift */; };
 		F791ABA92AE26DFA0008B7F5 /* ModelsNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = F791ABA82AE26DFA0008B7F5 /* ModelsNative.swift */; };
 		F79817D82AEF9236008A7E34 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */; };
 		F79817DA2AEF93B1008A7E34 /* RrefreshScrollTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79817D92AEF93B1008A7E34 /* RrefreshScrollTestView.swift */; };
 		F7DD7F572AE28226009A5625 /* ObservationBP in Frameworks */ = {isa = PBXBuildFile; productRef = F7DD7F562AE28226009A5625 /* ObservationBP */; };
+		F7F2FA3F2AF381A200C258D4 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F2FA3E2AF3819E00C258D4 /* LazyView.swift */; };
+		F7F2FA442AF39D2900C258D4 /* ObservedObjectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F2FA432AF39D2900C258D4 /* ObservedObjectTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 /* Begin PBXFileReference section */
 		D172801B2A7C010700CDC50B /* ObservationBPSwiftUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservationBPSwiftUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D172801E2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPSwiftUIDemoApp.swift; sourceTree = "<group>"; };
-		D17280202A7C010700CDC50B /* ContentViewA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewA.swift; sourceTree = "<group>"; };
 		D17280222A7C010900CDC50B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D17280252A7C010900CDC50B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D172802B2A7C010900CDC50B /* ObservationBPSwiftUIDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservationBPSwiftUIDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,13 +55,14 @@
 		D1B14B622A7C0169000F280F /* ObservationBP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObservationBP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevView.swift; sourceTree = "<group>"; };
 		E4FDB4502AE1726900D755C3 /* ContentViewB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewB.swift; sourceTree = "<group>"; };
-		E4FDB4542AE175F900D755C3 /* ContentViewC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewC.swift; sourceTree = "<group>"; };
 		E4FDB4562AE177C500D755C3 /* ContentViewD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewD.swift; sourceTree = "<group>"; };
 		F791ABA62AE26D5B0008B7F5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F791ABA82AE26DFA0008B7F5 /* ModelsNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsNative.swift; sourceTree = "<group>"; };
 		F79817D62AEF9213008A7E34 /* ObservationBP */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ObservationBP; path = ../..; sourceTree = "<group>"; };
 		F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshableScrollView.swift; sourceTree = "<group>"; };
 		F79817D92AEF93B1008A7E34 /* RrefreshScrollTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RrefreshScrollTestView.swift; sourceTree = "<group>"; };
+		F7F2FA3E2AF3819E00C258D4 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		F7F2FA432AF39D2900C258D4 /* ObservedObjectTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedObjectTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,18 +116,18 @@
 		D172801D2A7C010700CDC50B /* ObservationBPSwiftUIDemo */ = {
 			isa = PBXGroup;
 			children = (
-				F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */,
 				F791ABA62AE26D5B0008B7F5 /* Models.swift */,
 				F791ABA82AE26DFA0008B7F5 /* ModelsNative.swift */,
 				D172801E2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift */,
-				D17280202A7C010700CDC50B /* ContentViewA.swift */,
 				E4FDB4502AE1726900D755C3 /* ContentViewB.swift */,
-				E4FDB4542AE175F900D755C3 /* ContentViewC.swift */,
 				E4FDB4562AE177C500D755C3 /* ContentViewD.swift */,
+				F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */,
 				E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */,
+				F7F2FA432AF39D2900C258D4 /* ObservedObjectTest.swift */,
 				F79817D92AEF93B1008A7E34 /* RrefreshScrollTestView.swift */,
 				D17280222A7C010900CDC50B /* Assets.xcassets */,
 				D17280242A7C010900CDC50B /* Preview Content */,
+				F7F2FA3E2AF3819E00C258D4 /* LazyView.swift */,
 			);
 			path = ObservationBPSwiftUIDemo;
 			sourceTree = "<group>";
@@ -298,13 +298,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17280212A7C010700CDC50B /* ContentViewA.swift in Sources */,
 				E4FDB4512AE1726900D755C3 /* ContentViewB.swift in Sources */,
-				E4FDB4552AE175F900D755C3 /* ContentViewC.swift in Sources */,
 				F79817DA2AEF93B1008A7E34 /* RrefreshScrollTestView.swift in Sources */,
 				D172801F2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift in Sources */,
 				E4FDB4572AE177C500D755C3 /* ContentViewD.swift in Sources */,
+				F7F2FA442AF39D2900C258D4 /* ObservedObjectTest.swift in Sources */,
 				F791ABA72AE26D5B0008B7F5 /* Models.swift in Sources */,
+				F7F2FA3F2AF381A200C258D4 /* LazyView.swift in Sources */,
 				F791ABA92AE26DFA0008B7F5 /* ModelsNative.swift in Sources */,
 				E4DCE0AA2AE18B3600DDBBC9 /* DevView.swift in Sources */,
 				F79817D82AEF9236008A7E34 /* RefreshableScrollView.swift in Sources */,
