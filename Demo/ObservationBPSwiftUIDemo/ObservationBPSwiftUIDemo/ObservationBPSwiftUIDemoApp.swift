@@ -23,21 +23,25 @@ struct ObservationBPSwiftUIDemoApp: App {
 struct Page1: View {
     var body: some View {
         VStack {
-            NavigationLink(destination: LazyView { RrefreshScrollTestView() }) { Text("RrefreshScrollTestView") }
-                .padding()
-            NavigationLink(destination: LazyView { DevView() }) { Text("DevView") }
-                .padding()
-
-            NavigationLink(destination: LazyView { ObservedObjectTest() }) { Text("ObservedObjectTest") }
-                .padding()
-
-            NavigationLink(destination: LazyView { ContentViewB() }) { Text("<iOS17 ObservableObject") }
-                .padding()
+//            NavigationLink(destination: LazyView { RrefreshScrollTestView() }) { Text("RrefreshScrollTestView") }
+//                .padding()
 
             if #available(iOS 17.0, *) {
                 NavigationLink(destination: LazyView { ContentViewD() }) { Text("iOS17 @Observation") }
                     .padding()
             }
+
+            NavigationLink(destination: LazyView { ContentViewD2() }) { Text("@ObservationBP") }
+                .padding()
+
+            NavigationLink(destination: LazyView { ObservedObjectTest() }) { Text("Object Instance Keep Test") }
+                .padding()
+
+            NavigationLink(destination: LazyView { ContentViewB() }) { Text("<iOS17 ObservableObject") }
+                .padding()
+
+            NavigationLink(destination: LazyView { DevView() }) { Text("DevView") }
+                .padding()
         }
     }
 }

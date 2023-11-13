@@ -12,15 +12,23 @@ import SwiftUI
 @propertyWrapper
 public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
     // instance keep, likes @StateObject  https://gist.github.com/Amzd/8f0d4d94fcbb6c9548e7cf0c1493eaff
-    @State private var container: Container<Value>
+    @State private var container = Container<Value>()
     @ObservedObject private var emitter = Emitter()
+    private let thunk: () -> Value
 
     @MainActor
     public var wrappedValue: Value {
         set {
             container.value = newValue
+            let emitterWrapper = _emitter
+            DispatchQueue.main.async {
+                emitterWrapper.wrappedValue.objectWillChange.send(())
+            }
         }
         get {
+            if container.value == nil {
+                container.value = thunk()
+            }
             if !container.tracker.isRunning {
                 let emitterWrapper = _emitter
                 container.tracker.open { [weak container] in
@@ -32,7 +40,7 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
                     }
                 }
             }
-            return container.value
+            return container.value!
         }
     }
 
@@ -41,8 +49,8 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
         return Bindable(observing: self)
     }
 
-    public init(wrappedValue: Value) {
-        _container = .init(initialValue: Container(value: wrappedValue))
+    public init(wrappedValue: @autoclosure @escaping () -> Value) {
+        thunk = wrappedValue
     }
 
     public func update() {
@@ -62,6 +70,9 @@ extension Observing: Equatable {
     public static func == (lhs: Observing<Value>, rhs: Observing<Value>) -> Bool {
         if lhs.container.state.dirty || rhs.container.state.dirty {
             return false
+        }
+        if lhs.container.value == nil || rhs.container.value == nil {
+            return true
         }
         return lhs.container.value === rhs.container.value
     }
@@ -88,13 +99,9 @@ public extension Observing {
 }
 
 private final class Container<Value: AnyObject> {
-    var value: Value
+    var value: Value?
     private(set) var tracker = Tracker()
     private(set) var state = ObservingState()
-
-    init(value: Value) {
-        self.value = value
-    }
 }
 
 private final class ObservingState {
