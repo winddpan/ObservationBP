@@ -26,6 +26,13 @@ struct ObservedObjectTest: View {
 
             CountView3State()
                 .padding()
+
+            if #available(iOS 17.0, *) {
+                CountView4State()
+                    .padding()
+                CountView5State()
+                    .padding()
+            }
         }
     }
 }
@@ -63,11 +70,11 @@ class StateObjectClass: ObservableObject {
 }
 
 struct CountView1State: View {
-    @Observing var state = ObservableClass(type: "Observing")
+    @Observing var state = ObservableClass(type: "@Observing")
 
     var body: some View {
         VStack {
-            Text("Observing count :\(state.count)")
+            Text("@Observing count :\(state.count)")
             Button("+1") {
                 state.count += 1
             }
@@ -76,11 +83,11 @@ struct CountView1State: View {
 }
 
 struct CountView2State: View {
-    @StateObject var state = StateObjectClass(type: "StateObject")
+    @StateObject var state = StateObjectClass(type: "@StateObject")
 
     var body: some View {
         VStack {
-            Text("StateObject count :\(state.count)")
+            Text("@StateObject count :\(state.count)")
             Button("+1") {
                 state.count += 1
             }
@@ -89,11 +96,39 @@ struct CountView2State: View {
 }
 
 struct CountView3State: View {
-    @ObservedObject var state = StateObjectClass(type: "ObservedObject")
+    @ObservedObject var state = StateObjectClass(type: "@ObservedObject")
 
     var body: some View {
         VStack {
-            Text("ObservedObject count :\(state.count)")
+            Text("@ObservedObject count :\(state.count)")
+            Button("+1") {
+                state.count += 1
+            }
+        }
+    }
+}
+
+@available(iOS 17.0, *)
+struct CountView4State: View {
+    @State var state = Observable17Class(type: "iOS17 @State @Observation")
+
+    var body: some View {
+        VStack {
+            Text("iOS17 @State @Observation count :\(state.count)")
+            Button("+1") {
+                state.count += 1
+            }
+        }
+    }
+}
+
+@available(iOS 17.0, *)
+struct CountView5State: View {
+    var state = Observable17Class(type: "iOS17 @Observation")
+
+    var body: some View {
+        VStack {
+            Text("iOS17 @Observation count :\(state.count)")
             Button("+1") {
                 state.count += 1
             }

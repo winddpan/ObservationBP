@@ -25,8 +25,8 @@ import SwiftUI
         print("Person init: \(name)")
 
         var list: [Int] = []
-        for _ in 0 ..< 5 {
-            list.append(Int.random(in: 1 ... 1000))
+        for i in 0 ..< 5 {
+            list.append(i)
         }
         self.list = list.map { "\($0)" }
     }

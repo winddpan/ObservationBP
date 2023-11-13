@@ -22,26 +22,33 @@ struct ObservationBPSwiftUIDemoApp: App {
 
 struct Page1: View {
     var body: some View {
-        VStack {
-//            NavigationLink(destination: LazyView { RrefreshScrollTestView() }) { Text("RrefreshScrollTestView") }
-//                .padding()
+        List {
+            Section {
+                if #available(iOS 17.0, *) {
+                    NavigationLink(destination: LazyView { ContentView_Observation() }) { Text("iOS17 @Observation") }
+                        .padding()
+                }
 
-            if #available(iOS 17.0, *) {
-                NavigationLink(destination: LazyView { ContentViewD() }) { Text("iOS17 @Observation") }
+                NavigationLink(destination: LazyView { ContentView_ObservationBP() }) { Text("@ObservationBP") }
+                    .padding()
+
+                NavigationLink(destination: LazyView { ContentView_StateObject() }) { Text("<iOS17 StateObject") }
                     .padding()
             }
 
-            NavigationLink(destination: LazyView { ContentViewD2() }) { Text("@ObservationBP") }
-                .padding()
+            Section {
+                NavigationLink(destination: LazyView { ObservedObjectTest() }) { Text("Object Instance Keep Test") }
+                    .padding()
+            }
 
-            NavigationLink(destination: LazyView { ObservedObjectTest() }) { Text("Object Instance Keep Test") }
-                .padding()
+            Section {
+                NavigationLink(destination: LazyView { DevView() }) { Text("DevView") }
+                    .padding()
+            }
 
-            NavigationLink(destination: LazyView { ContentViewB() }) { Text("<iOS17 ObservableObject") }
-                .padding()
-
-            NavigationLink(destination: LazyView { DevView() }) { Text("DevView") }
-                .padding()
+            //            NavigationLink(destination: LazyView { RrefreshScrollTestView() }) { Text("RrefreshScrollTestView") }
+            //                .padding()
         }
+        .listStyle(.insetGrouped)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ContentViewD.swift
+//  ContentViewB.swift
 //  ObservationBPSwiftUIDemo
 //
 //  Created by winddpan on 2023/10/19.
@@ -7,35 +7,41 @@
 
 import SwiftUI
 
-@available(iOS 17.0, *)
-struct ContentViewD: View {
-    private var person = Person17(name: "Tom", age: 12)
-    @StateObject private var ref = Ref()
+struct ContentView_StateObject: View {
+    @StateObject private var person = Person13(name: "Tom", age: 12)
     @State private var randomColor = Color(
         red: .random(in: 0 ... 1),
         green: .random(in: 0 ... 1),
         blue: .random(in: 0 ... 1)
-    )
+    ).opacity(0.5)
 
     var body: some View {
-        let _ = Self._printChanges()
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
+        }
         VStack {
             Text(person.name)
             Text("\(person.age)")
             Text(person.list.description)
 
-            
             LazyView {
                 VStack {
                     Text("(lazy)" + person.name)
-                        .background(Color.yellow)
+                        .background(Color(
+                            red: .random(in: 0 ... 1),
+                            green: .random(in: 0 ... 1),
+                            blue: .random(in: 0 ... 1)
+                        ))
 
                     Text("(lazy)" + "\(person.age)")
-                        .background(Color.yellow)
+                        .background(Color(
+                            red: .random(in: 0 ... 1),
+                            green: .random(in: 0 ... 1),
+                            blue: .random(in: 0 ... 1)
+                        ))
                 }
             }
 
-            
             VStack {
                 PersonNameView(person: person)
                 PersonAgeView(person: person)
@@ -51,37 +57,38 @@ struct ContentViewD: View {
         }
         .padding()
         .background(randomColor)
-        .foregroundColor(ref.randomColor)
     }
 }
 
-@available(iOS 17.0, *)
 private struct PersonNameView: View {
-    private var person: Person17
-    private var clz = Clz17(name: UUID().uuidString.components(separatedBy: "-")[0])
+    @StateObject private var person: Person13
+    // private var clz = Clz(name: UUID().uuidString.components(separatedBy: "-")[0])
 
-    fileprivate init(person: Person17) {
-        self.person = person
+    fileprivate init(person: Person13) {
+        _person = .init(wrappedValue: person)
     }
 
     var body: some View {
-        let _ = Self._printChanges()
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
+        }
         VStack {
             Text(person.name)
-            Text(clz.name)
+            // Text(clz.name)
         }
     }
 }
 
-@available(iOS 17.0, *)
 private struct PersonAgeView: View {
-    private var person: Person17
-    fileprivate init(person: Person17) {
-        self.person = person
+    @StateObject private var person: Person13
+    fileprivate init(person: Person13) {
+        _person = .init(wrappedValue: person)
     }
 
     var body: some View {
-        let _ = Self._printChanges()
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
+        }
         Text("\(person.age)")
             .background(Color(
                 red: .random(in: 0 ... 1),
@@ -91,7 +98,6 @@ private struct PersonAgeView: View {
     }
 }
 
-@available(iOS 17.0, *)
 #Preview {
-    ContentViewD()
+    ContentView_StateObject()
 }
