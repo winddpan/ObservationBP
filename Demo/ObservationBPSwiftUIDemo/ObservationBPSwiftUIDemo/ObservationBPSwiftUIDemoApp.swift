@@ -23,6 +23,13 @@ struct ObservationBPSwiftUIDemoApp: App {
 struct Page1: View {
     var body: some View {
         List {
+            if #available(iOS 17.0, *) {
+                Section {
+                    NavigationLink(destination: LazyView { CompareDemoView() }) { Text("CompareDemoView") }
+                        .padding()
+                }
+            }
+
             Section {
                 if #available(iOS 17.0, *) {
                     NavigationLink(destination: LazyView { ContentView_Observation() }) { Text("iOS17 @Observation") }

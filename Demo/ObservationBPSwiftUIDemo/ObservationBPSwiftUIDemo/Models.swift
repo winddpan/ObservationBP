@@ -55,19 +55,3 @@ final class OBClz: ObservableObject {
         print("OBClz deinit: \(name)")
     }
 }
-
-class Ref: ObservableObject {
-    deinit {
-        print("RefA deinit")
-    }
-
-    init() {
-        print("RefA init")
-    }
-
-    let randomColor = Color(
-        red: .random(in: 0 ... 1),
-        green: .random(in: 0 ... 1),
-        blue: .random(in: 0 ... 1)
-    )
-}
