@@ -1,5 +1,5 @@
 
-![Demo](https://raw.githubusercontent.com/winddpan/ObservationBP/master/Demo/ObservationBPSwiftUIDemo/ObservationBPSwiftUIDemo/Demo.gif)
+![Demo](https://github.com/winddpan/ObservationBP/blob/master/Demo/ObservationBPSwiftUIDemo/Demo.gif?raw=true)
 
 
 ## Based on
