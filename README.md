@@ -58,7 +58,8 @@ private struct PersonAgeView: View {
  [onevcat/ObservationBP](https://github.com/onevcat/ObservationBP)
 
 ## Improvement
- * No more `ObservationView`
-   * Delay closure without `ObservationView` either
- * Instance keep, likes `@State` `@StateObject`
- * Memory leak fix
+* No more `ObservationView`.
+    * Delay closure without `ObservationView` either.
+    * Use `@Observing` once in each View
+* Instance kept, similar to `@State` and `@StateObject`.
+* Memory leak fixed.
