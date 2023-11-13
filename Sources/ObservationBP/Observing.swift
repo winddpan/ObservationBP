@@ -14,6 +14,7 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
     // instance keep, likes @StateObject  https://gist.github.com/Amzd/8f0d4d94fcbb6c9548e7cf0c1493eaff
     @State private var container = Container<Value>()
     @ObservedObject private var emitter = Emitter()
+
     private let thunk: () -> Value
 
     @MainActor
@@ -26,6 +27,9 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
             }
         }
         get {
+            if !container.firstGet {
+                container.firstGet = true
+            }
             if container.value == nil {
                 container.value = thunk()
             }
@@ -71,7 +75,7 @@ extension Observing: Equatable {
         if lhs.container.state.dirty || rhs.container.state.dirty {
             return false
         }
-        if lhs.container.value == nil || rhs.container.value == nil {
+        if !lhs.container.firstGet || !rhs.container.firstGet {
             return true
         }
         return lhs.container.value === rhs.container.value
@@ -100,6 +104,7 @@ public extension Observing {
 
 private final class Container<Value: AnyObject> {
     var value: Value?
+    var firstGet = false
     private(set) var tracker = Tracker()
     private(set) var state = ObservingState()
 }
