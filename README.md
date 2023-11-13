@@ -6,8 +6,18 @@
 import ObservationBP
 import SwiftUI
 
-struct CompareDemo_ObservationBP: View {
-    @Observing var person: Person
+@Observable final class Person {
+    var name: String
+    var age: Int
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+struct ContentView: View {
+    @Observing var person: Person = Person(name: "name", age: 1)
 
     var body: some View {
         VStack {
