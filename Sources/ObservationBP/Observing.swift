@@ -11,10 +11,9 @@ import SwiftUI
 
 @propertyWrapper
 public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
-    // instance keep, likes @StateObject  https://gist.github.com/Amzd/8f0d4d94fcbb6c9548e7cf0c1493eaff
+    // instance keep  https://gist.github.com/Amzd/8f0d4d94fcbb6c9548e7cf0c1493eaff
     @State private var container = Container<Value>()
     @ObservedObject private var emitter = Emitter()
-
     private let thunk: () -> Value
 
     @MainActor
@@ -37,7 +36,7 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
                 let emitterWrapper = _emitter
                 container.tracker.open { [weak container] in
                     if let container {
-                        container.state.dirty = true
+                        container.dirty = true
                         DispatchQueue.main.async {
                             emitterWrapper.wrappedValue.objectWillChange.send(())
                         }
@@ -58,9 +57,9 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
     }
 
     public func update() {
-        if container.state.dirty {
+        if container.dirty {
             DispatchQueue.main.async {
-                container.state.dirty = false
+                container.dirty = false
             }
         }
     }
@@ -72,7 +71,7 @@ private final class Emitter: ObservableObject {
 
 extension Observing: Equatable {
     public static func == (lhs: Observing<Value>, rhs: Observing<Value>) -> Bool {
-        if lhs.container.state.dirty || rhs.container.state.dirty {
+        if lhs.container.dirty || rhs.container.dirty {
             return false
         }
         if !lhs.container.firstGet || !rhs.container.firstGet {
@@ -105,24 +104,22 @@ public extension Observing {
 private final class Container<Value: AnyObject> {
     var value: Value?
     var firstGet = false
-    private(set) var tracker = Tracker()
-    private(set) var state = ObservingState()
-}
-
-private final class ObservingState {
     var dirty = false
+    let tracker = Tracker()
 }
 
 private weak var previousTracker: Tracker?
 
 private final class TrackerOne {
     private(set) var accessList: ObservationTracking._AccessList?
-    var ptr: UnsafeMutablePointer<ObservationTracking._AccessList?>?
-    var previous: UnsafeMutableRawPointer?
-    var onChange: (() -> Void)?
+    let ptr: UnsafeMutablePointer<ObservationTracking._AccessList?>?
+    let previous: UnsafeMutableRawPointer?
+    let onChange: () -> Void
 
-    init() {
+    init(previous: UnsafeMutableRawPointer?, onChange: @escaping () -> Void) {
         ptr = withUnsafeMutablePointer(to: &accessList) { $0 }
+        self.previous = previous
+        self.onChange = onChange
     }
 }
 
@@ -149,9 +146,7 @@ private final class Tracker {
         }
         isRunning = true
 
-        let one = TrackerOne()
-        one.onChange = onChange
-        one.previous = _ThreadLocal.value
+        let one = TrackerOne(previous: _ThreadLocal.value, onChange: onChange)
         trackers.append(one)
         _ThreadLocal.value = UnsafeMutableRawPointer(one.ptr)
 
@@ -185,9 +180,9 @@ private final class Tracker {
         }
         _ThreadLocal.value = lastOne.previous
 
-        if let accessList, lastOne.onChange != nil {
+        if let accessList {
             ObservationTracking._installTracking(accessList) { [weak lastOne, weak self] in
-                lastOne?.onChange?()
+                lastOne?.onChange()
                 self?.trackers.removeAll(where: { $0 === lastOne })
             }
         }
