@@ -6,6 +6,38 @@
 	<array>
 		<dict>
 			<key>BinaryPath</key>
+			<string>ObservationBPLock.framework/Versions/A/ObservationBPLock</string>
+			<key>LibraryIdentifier</key>
+			<string>macos-arm64_x86_64</string>
+			<key>LibraryPath</key>
+			<string>ObservationBPLock.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>arm64</string>
+				<string>x86_64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>macos</string>
+		</dict>
+		<dict>
+			<key>BinaryPath</key>
+			<string>ObservationBPLock.framework/Versions/A/ObservationBPLock</string>
+			<key>LibraryIdentifier</key>
+			<string>ios-arm64_x86_64-maccatalyst</string>
+			<key>LibraryPath</key>
+			<string>ObservationBPLock.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>arm64</string>
+				<string>x86_64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>ios</string>
+			<key>SupportedPlatformVariant</key>
+			<string>maccatalyst</string>
+		</dict>
+		<dict>
+			<key>BinaryPath</key>
 			<string>ObservationBPLock.framework/ObservationBPLock</string>
 			<key>LibraryIdentifier</key>
 			<string>ios-arm64</string>
