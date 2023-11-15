@@ -12,12 +12,12 @@ func _tlsGet() -> UnsafeMutableRawPointer?
 func _tlsSet(_ value: UnsafeMutableRawPointer?)
 
 public enum _ThreadLocal {
-    public static var value: UnsafeMutableRawPointer? {
-        get {
-            return _tlsGet()
-        }
-        set {
-            _tlsSet(newValue)
-        }
+  public static var value: UnsafeMutableRawPointer? {
+    get {
+      return _tlsGet()
     }
+    set {
+      _tlsSet(newValue)
+    }
+  }
 }

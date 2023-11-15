@@ -35,7 +35,7 @@ public protocol Observable {}
 @attached(memberAttribute)
 @attached(`extension`, conformances: Observable)
 public macro Observable() =
-    #externalMacro(module: "ObservationBPMacros", type: "ObservableMacro")
+  #externalMacro(module: "ObservationBPMacros", type: "ObservableMacro")
 
 /// Synthesizes a property for accessors.
 ///
@@ -44,7 +44,7 @@ public macro Observable() =
 @attached(accessor, names: named(init), named(get), named(set))
 @attached(peer, names: prefixed(_))
 public macro ObservationTracked() =
-    #externalMacro(module: "ObservationBPMacros", type: "ObservationTrackedMacro")
+  #externalMacro(module: "ObservationBPMacros", type: "ObservationTrackedMacro")
 
 /// Disables observation tracking of a property.
 ///
@@ -53,6 +53,6 @@ public macro ObservationTracked() =
 /// accessible property, attach the `ObservationIgnored` macro to the property.
 @attached(accessor, names: named(willSet))
 public macro ObservationIgnored() =
-    #externalMacro(module: "ObservationBPMacros", type: "ObservationIgnoredMacro")
+  #externalMacro(module: "ObservationBPMacros", type: "ObservationIgnoredMacro")
 
 #endif

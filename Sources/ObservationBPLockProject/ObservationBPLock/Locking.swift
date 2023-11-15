@@ -22,39 +22,39 @@ func _lockLock(_: UnsafeRawPointer)
 func _lockUnlock(_: UnsafeRawPointer)
 
 public struct _ManagedCriticalState<State> {
-    private final class LockedBuffer: ManagedBuffer<State, UnsafeRawPointer> {}
+  private final class LockedBuffer: ManagedBuffer<State, UnsafeRawPointer> {}
 
-    private let buffer: ManagedBuffer<State, UnsafeRawPointer>
+  private let buffer: ManagedBuffer<State, UnsafeRawPointer>
 
-    public init(_ buffer: ManagedBuffer<State, UnsafeRawPointer>) {
-        self.buffer = buffer
+  public init(_ buffer: ManagedBuffer<State, UnsafeRawPointer>) {
+    self.buffer = buffer
+  }
+
+  public init(_ initial: State) {
+    let roundedSize = (_lockSize() + MemoryLayout<UnsafeRawPointer>.size - 1) / MemoryLayout<UnsafeRawPointer>.size
+    self.init(LockedBuffer.create(minimumCapacity: Swift.max(roundedSize, 1)) { buffer in
+      buffer.withUnsafeMutablePointerToElements { _lockInit(UnsafeRawPointer($0)) }
+      return initial
+    })
+  }
+
+  public func withCriticalRegion<R>(
+    _ critical: (inout State) throws -> R
+  ) rethrows -> R {
+    try buffer.withUnsafeMutablePointers { header, lock in
+      _lockLock(UnsafeRawPointer(lock))
+      defer {
+        _lockUnlock(UnsafeRawPointer(lock))
+      }
+      return try critical(&header.pointee)
     }
-
-    public init(_ initial: State) {
-        let roundedSize = (_lockSize() + MemoryLayout<UnsafeRawPointer>.size - 1) / MemoryLayout<UnsafeRawPointer>.size
-        self.init(LockedBuffer.create(minimumCapacity: Swift.max(roundedSize, 1)) { buffer in
-            buffer.withUnsafeMutablePointerToElements { _lockInit(UnsafeRawPointer($0)) }
-            return initial
-        })
-    }
-
-    public func withCriticalRegion<R>(
-        _ critical: (inout State) throws -> R
-    ) rethrows -> R {
-        try buffer.withUnsafeMutablePointers { header, lock in
-            _lockLock(UnsafeRawPointer(lock))
-            defer {
-                _lockUnlock(UnsafeRawPointer(lock))
-            }
-            return try critical(&header.pointee)
-        }
-    }
+  }
 }
 
 extension _ManagedCriticalState: @unchecked Sendable where State: Sendable {}
 
 extension _ManagedCriticalState: Identifiable {
-    public var id: ObjectIdentifier {
-        ObjectIdentifier(buffer)
-    }
+  public var id: ObjectIdentifier {
+    ObjectIdentifier(buffer)
+  }
 }

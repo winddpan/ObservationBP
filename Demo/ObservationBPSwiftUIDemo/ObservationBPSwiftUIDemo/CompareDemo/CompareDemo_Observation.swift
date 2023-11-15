@@ -13,6 +13,7 @@ struct CompareDemo_Observation: View {
     @State var person: Person17
 
     var body: some View {
+        let _ = Self._printChanges()
         VStack {
             PersonNameView(person: person)
             PersonAgeView(person: person)

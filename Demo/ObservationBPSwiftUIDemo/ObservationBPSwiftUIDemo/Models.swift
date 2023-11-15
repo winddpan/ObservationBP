@@ -14,6 +14,10 @@ import SwiftUI
     var age: Int
     var list: [String] = []
 
+    var getName: String {
+        name
+    }
+
     deinit {
         print("Person deinit: \(name)")
     }

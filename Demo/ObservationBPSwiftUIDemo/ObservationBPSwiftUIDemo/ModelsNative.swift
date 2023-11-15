@@ -14,6 +14,10 @@ import Observation
     var age: Int
     var list: [String] = []
 
+    var getName: String {
+        name
+    }
+
     deinit {
         print("Person17 deinit: \(name)")
     }

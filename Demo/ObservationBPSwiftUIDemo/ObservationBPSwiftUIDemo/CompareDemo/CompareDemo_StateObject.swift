@@ -11,6 +11,9 @@ struct CompareDemo_StateObject: View {
     @StateObject var person: Person13
 
     var body: some View {
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
+        }
         VStack {
             PersonNameView(person: person)
             PersonAgeView(person: person)

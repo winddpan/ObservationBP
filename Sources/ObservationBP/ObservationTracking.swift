@@ -8,7 +8,6 @@
 // See https://swift.org/LICENSE.txt for license information
 //
 //===----------------------------------------------------------------------===//
-
 import ObservationBPLock
 
 @_spi(SwiftUI)
@@ -21,14 +20,14 @@ public struct ObservationTracking: Sendable {
 
   struct Entry: @unchecked Sendable {
     let context: ObservationRegistrar.Context
-    
+
     var properties: Set<AnyKeyPath>
-    
+
     init(_ context: ObservationRegistrar.Context, properties: Set<AnyKeyPath> = []) {
       self.context = context
       self.properties = properties
     }
-    
+
     func addWillSetObserver(_ changed: @Sendable @escaping () -> Void) -> Int {
       return context.registerTracking(for: properties, willSet: changed)
     }
@@ -36,34 +35,34 @@ public struct ObservationTracking: Sendable {
     func addDidSetObserver(_ changed: @Sendable @escaping () -> Void) -> Int {
       return context.registerTracking(for: properties, didSet: changed)
     }
-    
+
     func removeObserver(_ token: Int) {
       context.cancel(token)
     }
-    
+
     mutating func insert(_ keyPath: AnyKeyPath) {
       properties.insert(keyPath)
     }
-    
+
     func union(_ entry: Entry) -> Entry {
       Entry(context, properties: properties.union(entry.properties))
     }
   }
-  
+
   @_spi(SwiftUI)
   public struct _AccessList: Sendable {
-    internal var entries = [ObjectIdentifier : Entry]()
+    var entries = [ObjectIdentifier: Entry]()
 
-    internal init() { }
-    
-    internal mutating func addAccess<Subject: Observable>(
+    init() {}
+
+    mutating func addAccess<Subject: Observable>(
       keyPath: PartialKeyPath<Subject>,
       context: ObservationRegistrar.Context
     ) {
       entries[context.id, default: Entry(context)].insert(keyPath)
     }
-    
-    internal mutating func merge(_ other: _AccessList) {
+
+    mutating func merge(_ other: _AccessList) {
       entries.merge(other.entries) { existing, entry in
         existing.union(entry)
       }
@@ -78,17 +77,17 @@ public struct ObservationTracking: Sendable {
   ) {
     let values = tracking.list.entries.mapValues {
       switch (willSet, didSet) {
-      case (.some(let willSetObserver), .some(let didSetObserver)):
+      case let (.some(willSetObserver), .some(didSetObserver)):
         return Id.full($0.addWillSetObserver {
           willSetObserver(tracking)
         }, $0.addDidSetObserver {
           didSetObserver(tracking)
         })
-      case (.some(let willSetObserver), .none):
+      case let (.some(willSetObserver), .none):
         return Id.willSet($0.addWillSetObserver {
           willSetObserver(tracking)
         })
-      case (.none, .some(let didSetObserver)):
+      case let (.none, .some(didSetObserver)):
         return Id.didSet($0.addDidSetObserver {
           didSetObserver(tracking)
         })
@@ -96,7 +95,7 @@ public struct ObservationTracking: Sendable {
         fatalError()
       }
     }
-    
+
     tracking.install(values)
   }
 
@@ -116,16 +115,16 @@ public struct ObservationTracking: Sendable {
     var values = [ObjectIdentifier: ObservationTracking.Id]()
     var cancelled = false
   }
-  
+
   private let state = _ManagedCriticalState(State())
   private let list: _AccessList
-  
+
   @_spi(SwiftUI)
   public init(_ list: _AccessList?) {
     self.list = list ?? _AccessList()
   }
 
-  internal func install(_ values:  [ObjectIdentifier : ObservationTracking.Id]) {
+  func install(_ values: [ObjectIdentifier: ObservationTracking.Id]) {
     state.withCriticalRegion {
       if !$0.cancelled {
         $0.values = values
@@ -141,16 +140,16 @@ public struct ObservationTracking: Sendable {
       return values
     }
     for (id, observationId) in values {
-        switch observationId {
-        case .willSet(let token):
-          list.entries[id]?.removeObserver(token)
-        case .didSet(let token):
-          list.entries[id]?.removeObserver(token)
-        case .full(let willSetToken, let didSetToken):
-          list.entries[id]?.removeObserver(willSetToken)
-          list.entries[id]?.removeObserver(didSetToken)
-        }
+      switch observationId {
+      case let .willSet(token):
+        list.entries[id]?.removeObserver(token)
+      case let .didSet(token):
+        list.entries[id]?.removeObserver(token)
+      case let .full(willSetToken, didSetToken):
+        list.entries[id]?.removeObserver(willSetToken)
+        list.entries[id]?.removeObserver(didSetToken)
       }
+    }
   }
 }
 
@@ -199,6 +198,7 @@ fileprivate func generateAccessList<T>(_ apply: () -> T) -> (T, ObservationTrack
 ///
 /// - Returns: The value that the `apply` closure returns if it has a return
 /// value; otherwise, there is no return value.
+
 public func withObservationTracking<T>(
   _ apply: () -> T,
   onChange: @autoclosure () -> @Sendable () -> Void

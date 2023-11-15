@@ -12,6 +12,9 @@ struct CompareDemo_ObservationBP: View {
     @Observing var person: Person
 
     var body: some View {
+        if #available(iOS 15.0, *) {
+            let _ = Self._printChanges()
+        }
         VStack {
             PersonNameView(person: person)
             PersonAgeView(person: person)
