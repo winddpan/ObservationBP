@@ -15,13 +15,13 @@ struct CompareDemo_StateObject: View {
             let _ = Self._printChanges()
         }
         VStack {
-            PersonNameView(person: person)
-            PersonAgeView(person: person)
+            PersonNameView_StateObject(person: person)
+            PersonAgeView_StateObject(person: person)
         }
     }
 }
 
-private struct PersonNameView: View {
+private struct PersonNameView_StateObject: View {
     @StateObject var person: Person13
 
     var body: some View {
@@ -37,7 +37,7 @@ private struct PersonNameView: View {
     }
 }
 
-private struct PersonAgeView: View {
+private struct PersonAgeView_StateObject: View {
     @StateObject var person: Person13
 
     var body: some View {

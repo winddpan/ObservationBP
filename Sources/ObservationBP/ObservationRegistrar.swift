@@ -15,6 +15,8 @@
 /// the ``Observation/Observable()`` macro to indicate observability of a type.
 import ObservationBPLock
 
+let allRespondedKeyPath: AnyKeyPath = \ObservationRegistrar.Context.id
+
 public struct ObservationRegistrar: Sendable {
   class ValueObservationStorage {
     func emit<Element>(_ element: Element) -> Bool { return false }
@@ -187,11 +189,16 @@ public struct ObservationRegistrar: Sendable {
 
     mutating func willSet(keyPath: AnyKeyPath) -> [@Sendable () -> Void] {
       var trackers = [@Sendable () -> Void]()
-      if let ids = lookups[keyPath] {
-        for id in ids {
-          if let tracker = observations[id]?.willSetTracker {
-            trackers.append(tracker)
-          }
+      var ids = Set<Int>()
+      if let find = lookups[keyPath] {
+        ids = ids.union(find)
+      }
+      if let find = lookups[allRespondedKeyPath] {
+        ids = ids.union(find)
+      }
+      for id in ids {
+        if let tracker = observations[id]?.willSetTracker {
+          trackers.append(tracker)
         }
       }
       return trackers
@@ -200,15 +207,20 @@ public struct ObservationRegistrar: Sendable {
     mutating func didSet<Subject: Observable, Member>(keyPath: KeyPath<Subject, Member>) -> ([@Sendable (Any) -> Void], [@Sendable () -> Void]) {
       var observers = [@Sendable (Any) -> Void]()
       var trackers = [@Sendable () -> Void]()
-      if let ids = lookups[keyPath] {
-        for id in ids {
-          if let observer = observations[id]?.observer {
-            observers.append(observer)
-            cancel(id)
-          }
-          if let tracker = observations[id]?.didSetTracker {
-            trackers.append(tracker)
-          }
+      var ids = Set<Int>()
+      if let find = lookups[keyPath] {
+        ids = ids.union(find)
+      }
+      if let find = lookups[allRespondedKeyPath] {
+        ids = ids.union(find)
+      }
+      for id in ids {
+        if let observer = observations[id]?.observer {
+          observers.append(observer)
+          cancel(id)
+        }
+        if let tracker = observations[id]?.didSetTracker {
+          trackers.append(tracker)
         }
       }
       return (observers, trackers)

@@ -9,107 +9,110 @@ import ObservationBP
 import SwiftUI
 
 struct DevView: View {
-    @Observing
-    private var person = DevPerson(name: "Tom", age: 12)
+  @Observing
+  private var person = DevPerson(name: "Tom", age: 12)
 
-    @State private var randomColor = Color(
-        red: .random(in: 0 ... 1),
-        green: .random(in: 0 ... 1),
-        blue: .random(in: 0 ... 1)
-    )
+  @State private var randomColor = Color(
+    red: .random(in: 0 ... 1),
+    green: .random(in: 0 ... 1),
+    blue: .random(in: 0 ... 1)
+  )
 
-    var body: some View {
-        if #available(iOS 15.0, *) {
-            let _ = Self._printChanges()
-        }
-        VStack {
-            Text(person.name)
-            Text("\(person.age)")
-
-            TextField("123", text: $person.name)
-                .background(Color.yellow)
-
-            LazyView {
-                VStack {
-                    Text("(lazy)" + person.name)
-                        .background(Color.yellow)
-
-                    Text("(lazy)" + "\(person.age)")
-                        .background(Color.yellow)
-                }
-            }
-
-            VStack {
-                PersonNameView(person: person)
-                PersonName2View(person: person)
-                PersonAgeView(person: person)
-            }
-            .padding()
-
-            HStack {
-                Button("+") { person.age += 1 }
-                Button("-") { person.age -= 1 }
-                Button("name") { person.name += "@" }
-            }
-        }
-        .padding()
-        .background(randomColor)
+  var body: some View {
+    if #available(iOS 15.0, *) {
+      let _ = Self._printChanges()
     }
+    VStack {
+      Text(person.name)
+      Text("\(person.age)")
+
+      TextField("123", text: $person.name)
+        .background(Color.yellow)
+
+      LazyView {
+        VStack {
+          Text("(lazy)" + person.name)
+            .background(Color.yellow)
+
+          Text("(lazy)" + "\(person.age)")
+            .background(Color.yellow)
+        }
+      }
+
+      VStack {
+        PersonNameView(person: person)
+        PersonName2View(person: person)
+        PersonAgeView(person: person)
+      }
+      .padding()
+
+      HStack {
+        Button("+") { person.age += 1 }
+        Button("-") { person.age -= 1 }
+        Button("name") { person.name += "@" }
+      }
+    }
+    .padding()
+    .background(randomColor)
+  }
 }
 
 private struct PersonNameView: View {
-    @Observing
-    var person: DevPerson
+  @Observing
+  var person: DevPerson
 
-    init(person: DevPerson) {
-        _person = .init(wrappedValue: person)
-    }
+  init(person: DevPerson) {
+    _person = .init(wrappedValue: person)
+  }
 
-    var body: some View {
-        if #available(iOS 15.0, *) {
-            let _ = Self._printChanges()
-        }
-        Text(person.name)
+  var body: some View {
+    if #available(iOS 15.0, *) {
+      let _ = Self._printChanges()
     }
+    Text(person.name)
+      .onAppear {
+        person.name = "onAppear changed!"
+      }
+  }
 }
 
 private struct PersonName2View: View {
-    @Observing
-    var person: DevPerson
+  @Observing
+  var person: DevPerson
 
-    init(person: DevPerson) {
-        _person = .init(wrappedValue: person)
-    }
+  init(person: DevPerson) {
+    _person = .init(wrappedValue: person)
+  }
 
-    var body: some View {
-        if #available(iOS 15.0, *) {
-            let _ = Self._printChanges()
-        }
-        TextField("name", text: $person.name)
+  var body: some View {
+    if #available(iOS 15.0, *) {
+      let _ = Self._printChanges()
     }
+    TextField("name", text: $person.name)
+  }
 }
 
 private struct PersonAgeView: View {
-    @Observing var person: DevPerson
-    init(person: DevPerson) {
-        _person = .init(wrappedValue: person)
-    }
+  @Observing var person: DevPerson
+  init(person: DevPerson) {
+    _person = .init(wrappedValue: person)
+  }
 
-    var body: some View {
-        if #available(iOS 15.0, *) {
-            let _ = Self._printChanges()
-        }
-        Text("\(person.age)")
-            .background(Color(
-                red: .random(in: 0 ... 1),
-                green: .random(in: 0 ... 1),
-                blue: .random(in: 0 ... 1)
-            ))
+  var body: some View {
+    if #available(iOS 15.0, *) {
+      let _ = Self._printChanges()
     }
+    Text("\(person.age)")
+      .background(Color(
+        red: .random(in: 0 ... 1),
+        green: .random(in: 0 ... 1),
+        blue: .random(in: 0 ... 1)
+      ))
+  }
 }
 
 #Preview {
-    DevView()
+  DevView()
 }
 
 typealias DevPerson = Person

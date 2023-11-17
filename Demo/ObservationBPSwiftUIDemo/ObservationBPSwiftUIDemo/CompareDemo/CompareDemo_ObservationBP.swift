@@ -16,13 +16,13 @@ struct CompareDemo_ObservationBP: View {
             let _ = Self._printChanges()
         }
         VStack {
-            PersonNameView(person: person)
-            PersonAgeView(person: person)
+            PersonNameView_ObservationBP(person: person)
+            PersonAgeView_ObservationBP(person: person)
         }
     }
 }
 
-private struct PersonNameView: View {
+private struct PersonNameView_ObservationBP: View {
     @Observing var person: Person
 
     var body: some View {
@@ -38,7 +38,7 @@ private struct PersonNameView: View {
     }
 }
 
-private struct PersonAgeView: View {
+private struct PersonAgeView_ObservationBP: View {
     @Observing var person: Person
 
     var body: some View {

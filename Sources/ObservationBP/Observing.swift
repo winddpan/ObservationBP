@@ -6,7 +6,6 @@
 
 import Combine
 import Foundation
-import ObservationBPLock
 import SwiftUI
 
 @propertyWrapper
@@ -32,9 +31,9 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
       if container.value == nil {
         container.value = thunk()
       }
-      if !container.tracker.isRunning {
+      if !container.tracker.isOpening {
         let emitterWrapper = _emitter
-        container.tracker.open { [weak container] in
+        container.tracker.open(container.value!) { [weak container] in
           if let container {
             container.dirty = true
             DispatchQueue.main.async {
@@ -106,85 +105,4 @@ private final class Container<Value: AnyObject> {
   var firstGet = false
   var dirty = false
   let tracker = Tracker()
-}
-
-private weak var previousTracker: Tracker?
-
-private final class TrackerOne {
-  private(set) var accessList: ObservationTracking._AccessList?
-  let ptr: UnsafeMutablePointer<ObservationTracking._AccessList?>?
-  let previous: UnsafeMutableRawPointer?
-  let onChange: () -> Void
-
-  init(previous: UnsafeMutableRawPointer?, onChange: @escaping () -> Void) {
-    ptr = withUnsafeMutablePointer(to: &accessList) { $0 }
-    self.previous = previous
-    self.onChange = onChange
-  }
-}
-
-private final class Tracker {
-  private(set) var isRunning = false
-  private var trackers: [TrackerOne] = []
-
-  deinit {
-    if isRunning {
-      isRunning = false
-      _ThreadLocal.value = trackers.first?.previous
-      if previousTracker === self {
-        previousTracker = nil
-      }
-    }
-  }
-
-  @MainActor
-  func open(onChange: @escaping () -> Void) {
-    guard !isRunning else { return }
-    if let previous = previousTracker {
-      previous.close()
-      previousTracker = nil
-    }
-    isRunning = true
-
-    let one = TrackerOne(previous: _ThreadLocal.value, onChange: onChange)
-    trackers.append(one)
-    _ThreadLocal.value = UnsafeMutableRawPointer(one.ptr)
-
-    previousTracker = self
-
-    DispatchQueue.main.async { [weak self] in
-      self?.close()
-    }
-  }
-
-  @MainActor
-  func close() {
-    defer {
-      isRunning = false
-      if previousTracker === self {
-        previousTracker = nil
-      }
-    }
-    guard isRunning, let lastOne = trackers.last else { return }
-
-    let accessList = lastOne.accessList
-    let ptr = lastOne.ptr
-
-    if let scoped = ptr?.pointee, let previous = lastOne.previous {
-      if var prevList = previous.assumingMemoryBound(to: ObservationTracking._AccessList?.self).pointee {
-        prevList.merge(scoped)
-        previous.assumingMemoryBound(to: ObservationTracking._AccessList?.self).pointee = prevList
-      } else {
-        previous.assumingMemoryBound(to: ObservationTracking._AccessList?.self).pointee = scoped
-      }
-    }
-    _ThreadLocal.value = lastOne.previous
-
-    if let accessList {
-      ObservationTracking._installTracking(accessList) { [weak lastOne, weak self] in
-        lastOne?.onChange()
-        self?.trackers.removeAll(where: { $0 === lastOne })
-      }
-    }
-  }
 }

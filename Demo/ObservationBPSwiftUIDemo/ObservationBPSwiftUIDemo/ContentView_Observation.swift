@@ -23,39 +23,48 @@ struct ContentView_Observation: View {
             Text("\(person.age)")
             Text(person.list.description)
 
-            LazyView {
-                VStack {
-                    Text("(lazy)" + person.name)
-                        .background(Color(
-                            red: .random(in: 0 ... 1),
-                            green: .random(in: 0 ... 1),
-                            blue: .random(in: 0 ... 1)
-                        ))
-
-                    Text("(lazy)" + "\(person.age)")
-                        .background(Color(
-                            red: .random(in: 0 ... 1),
-                            green: .random(in: 0 ... 1),
-                            blue: .random(in: 0 ... 1)
-                        ))
-                }
-            }
-
-            VStack {
-                PersonNameView(person: person)
-                PersonAgeView(person: person)
-            }
-            .padding()
-
-            HStack {
-                Button("+") { person.age += 1 }
-                Button("-") { person.age -= 1 }
-                Button("name") { person.name += "@" }
-                Button("list") { person.list = person.list.shuffled() }
-            }
+//            LazyView {
+//                VStack {
+//                    Text("(lazy)" + person.name)
+//                        .background(Color(
+//                            red: .random(in: 0 ... 1),
+//                            green: .random(in: 0 ... 1),
+//                            blue: .random(in: 0 ... 1)
+//                        ))
+//
+//                    Text("(lazy)" + "\(person.age)")
+//                        .background(Color(
+//                            red: .random(in: 0 ... 1),
+//                            green: .random(in: 0 ... 1),
+//                            blue: .random(in: 0 ... 1)
+//                        ))
+//                }
+//            }
+//
+//            VStack {
+//                PersonNameView(person: person)
+//                PersonAgeView(person: person)
+//            }
+//            .padding()
+//
+//            HStack {
+//                Button("+") { person.age += 1 }
+//                Button("-") { person.age -= 1 }
+//                Button("name") { person.name += "@" }
+//                Button("list") { person.list = person.list.shuffled() }
+//            }
         }
         .padding()
         .background(randomColor)
+        .onAppear {
+            person.name = "onAppear changed!"
+            
+            withObservationTracking {
+                person.name = "onAppear changed!xxx"
+            } onChange: {
+                print("changed")
+            }
+        }
     }
 }
 
