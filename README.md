@@ -1,7 +1,7 @@
 
 ![Demo](https://github.com/winddpan/ObservationBP/blob/master/Demo/ObservationBPSwiftUIDemo/Demo.gif?raw=true)
 
-## Sample
+## Example
 ``` Swift
 import ObservationBP
 import SwiftUI
@@ -53,6 +53,10 @@ private struct PersonAgeView: View {
     }
 }
 ```
+
+## Installation
+Swift Package Manager
+> https://github.com/winddpan/ObservationBP.git
 
 ## Based on
  [onevcat/ObservationBP](https://github.com/onevcat/ObservationBP)
