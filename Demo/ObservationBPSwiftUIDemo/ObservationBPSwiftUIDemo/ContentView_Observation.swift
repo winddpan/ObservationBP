@@ -42,7 +42,7 @@ struct ContentView_Observation: View {
 //            }
 //
       VStack {
-        PersonNameView(person: .init(name: person.name, age: 1))
+//        PersonNameView(person: .init(name: person.name, age: 1))
         PersonAgeView(person: person)
       }
       .padding()
@@ -64,10 +64,6 @@ private struct PersonNameView: View {
   var person: Person17
   @State private var clz = Clz17(name: Date().description)
 
-//  fileprivate init(person: Person17) {
-//    self.person = person
-//  }
-
   var body: some View {
     let _ = Self._printChanges()
     VStack {
@@ -79,10 +75,7 @@ private struct PersonNameView: View {
 
 @available(iOS 17.0, *)
 private struct PersonAgeView: View {
-  private var person: Person17
-  fileprivate init(person: Person17) {
-    self.person = person
-  }
+  var person: Person17
 
   var body: some View {
     let _ = Self._printChanges()

@@ -10,11 +10,9 @@ import SwiftUI
 
 @propertyWrapper
 public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
-  private var container = Container<Value>()
-  private let thunk: () -> Value
+  private var container: Container<Value>
   @ObservedObject private var emitter = Emitter()
   @State private var uuid = UUID()
-
   private let identifier: String
 
   @MainActor
@@ -27,8 +25,10 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
       }
     }
     get {
-      ensureContainerValue()
-      return container.value!
+      if !container.firstGet {
+        container.firstGet = true
+      }
+      return container.value
     }
   }
 
@@ -37,41 +37,23 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
     return Bindable(observing: self)
   }
 
-  public init(wrappedValue: @autoclosure @escaping () -> Value, line: Int = #line, column: Int = #column) {
-    thunk = wrappedValue
+  public init(wrappedValue: Value, line: Int = #line, column: Int = #column) {
     identifier = "\(line)_\(column)"
-
+    container = .init(value: wrappedValue)
     print("init", identifier)
   }
 
   public func update() {
-    ensureContainerValue()
-
-    let tracker = container.value!.trackerMap.tracker(of: uuid)
+    let tracker = container.value.trackerMap.tracker(of: uuid)
     let emitterWrapper = _emitter
-    tracker.open(container.value!) { [weak container] in
+    let uuid = self.uuid
+    tracker.open(container.value) { [weak container] in
+      print("change", uuid, self.identifier)
       container?.dirty = true
       emitterWrapper.wrappedValue.objectWillChange.send(())
       DispatchQueue.main.async {
         container?.dirty = false
       }
-    }
-
-    print(identifier, container.value)
-
-//    if container.dirty {
-//      DispatchQueue.main.async {
-//        container.dirty = false
-//      }
-//    }
-  }
-
-  private func ensureContainerValue() {
-    if !container.firstGet {
-      container.firstGet = true
-    }
-    if container.value == nil {
-      container.value = thunk()
     }
   }
 }
@@ -85,10 +67,13 @@ extension Observing: Equatable {
     if lhs.container.dirty || rhs.container.dirty {
       return false
     }
-    if !lhs.container.firstGet || !rhs.container.firstGet {
+    if lhs.container.value === rhs.container.value {
       return true
     }
-    return lhs.container.value === rhs.container.value
+//    if !lhs.container.firstGet || !rhs.container.firstGet {
+//      return true
+//    }
+    return false
   }
 }
 
@@ -113,9 +98,13 @@ public extension Observing {
 }
 
 private final class Container<Value: AnyObject> {
-  var value: Value?
+  var value: Value
   var firstGet = false
   var dirty = false
+
+  init(value: Value) {
+    self.value = value
+  }
 }
 
 private var trackerKey: UInt = 0

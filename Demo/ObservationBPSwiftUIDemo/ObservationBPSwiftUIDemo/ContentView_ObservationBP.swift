@@ -25,30 +25,29 @@ struct ContentView_ObservationBP: View {
       let _ = Self._printChanges()
     }
     VStack {
-//            Text(person.name)
-//            Text("\(person.age)")
-//            Text(person.list.description)
+//      Text(person.name)
+//      Text("\(person.age)")
+//      Text(person.list.description)
 //
-//            LazyView {
-//                VStack {
-//                    Text("(lazy)" + person.name)
-//                        .background(Color(
-//                            red: .random(in: 0 ... 1),
-//                            green: .random(in: 0 ... 1),
-//                            blue: .random(in: 0 ... 1)
-//                        ))
+//      LazyView {
+//        VStack {
+//          Text("(lazy)" + person.name)
+//            .background(Color(
+//              red: .random(in: 0 ... 1),
+//              green: .random(in: 0 ... 1),
+//              blue: .random(in: 0 ... 1)
+//            ))
 //
-//                    Text("(lazy)" + "\(person.age)")
-//                        .background(Color(
-//                            red: .random(in: 0 ... 1),
-//                            green: .random(in: 0 ... 1),
-//                            blue: .random(in: 0 ... 1)
-//                        ))
-//                }
-//            }
+//          Text("(lazy)" + "\(person.age)")
+//            .background(Color(
+//              red: .random(in: 0 ... 1),
+//              green: .random(in: 0 ... 1),
+//              blue: .random(in: 0 ... 1)
+//            ))
+//        }
+//      }
 
       VStack {
-        Text(person.name)
         PersonNameView(person: .init(name: person.name, age: 1))
         PersonAgeView(person: person)
       }
