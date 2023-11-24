@@ -56,14 +56,22 @@ final class Person13: ObservableObject {
 }
 
 @available(iOS 17.0, *)
-@Observable final class Clz17 {
+@Observable final class Clz17: Equatable {
+    static func == (lhs: Clz17, rhs: Clz17) -> Bool {
+        lhs === rhs
+    }
+    
     var name: String
 
     init(name: String) {
         self.name = name
+
+        print("Clz17 init: \(name)")
     }
 
     deinit {
         print("Clz17 deinit: \(name)")
     }
+    
+    
 }

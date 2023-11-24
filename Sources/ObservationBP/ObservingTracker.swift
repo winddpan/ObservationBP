@@ -82,6 +82,17 @@ final class Tracker {
   }
 
   @MainActor
+  func cancel() {
+    if isOpening {
+      isOpening = false
+      _ThreadLocal.value = trackers.first?.previous
+      if previousTracker === self {
+        previousTracker = nil
+      }
+    }
+  }
+
+  @MainActor
   func startGapTracking<Value: AnyObject & Observable>(_ value: Value) {
     guard let lastOne = trackers.last else {
       return
