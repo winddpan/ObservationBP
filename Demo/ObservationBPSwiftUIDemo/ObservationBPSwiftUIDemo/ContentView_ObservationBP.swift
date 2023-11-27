@@ -10,11 +10,6 @@ import SwiftUI
 
 struct ContentView_ObservationBP: View {
   @Observing @State private var person = Person(name: "Tom", age: 12)
-  @State private var randomColor = Color(
-    red: .random(in: 0 ... 1),
-    green: .random(in: 0 ... 1),
-    blue: .random(in: 0 ... 1)
-  ).opacity(0.5)
 
   init() {
     print("init!")
@@ -25,25 +20,29 @@ struct ContentView_ObservationBP: View {
       let _ = Self._printChanges()
     }
     VStack {
-      Text(person.name)
-      Text("\(person.age)")
-      Text(person.list.description)
+      CardView("RootView") {
+        Text(person.name)
+        Text("\(person.age)")
+        Text(person.list.description)
+      }
 
-      LazyView {
-        VStack {
-          Text("(lazy)" + person.name)
-            .background(Color(
-              red: .random(in: 0 ... 1),
-              green: .random(in: 0 ... 1),
-              blue: .random(in: 0 ... 1)
-            ))
+      CardView("LazyView") {
+        LazyView {
+          VStack {
+            Text("(lazy)" + person.name)
+              .background(Color(
+                red: .random(in: 0 ... 1),
+                green: .random(in: 0 ... 1),
+                blue: .random(in: 0 ... 1)
+              ))
 
-          Text("(lazy)" + "\(person.age)")
-            .background(Color(
-              red: .random(in: 0 ... 1),
-              green: .random(in: 0 ... 1),
-              blue: .random(in: 0 ... 1)
-            ))
+            Text("(lazy)" + "\(person.age)")
+              .background(Color(
+                red: .random(in: 0 ... 1),
+                green: .random(in: 0 ... 1),
+                blue: .random(in: 0 ... 1)
+              ))
+          }
         }
       }
 
@@ -52,7 +51,6 @@ struct ContentView_ObservationBP: View {
         PersonAgeView(person: person)
         StateView()
       }
-      .padding()
 
       HStack {
         Button("+") { person.age += 1 }
@@ -62,7 +60,6 @@ struct ContentView_ObservationBP: View {
       }
     }
     .padding()
-    .background(randomColor)
   }
 }
 
@@ -74,14 +71,11 @@ private struct PersonNameView: View {
     if #available(iOS 15.0, *) {
       let _ = Self._printChanges()
     }
-    VStack {
-      Text("PersonNameView")
+    CardView("PersonNameView") {
       Text(person.name)
       Text("\(person.age)")
       Text(clz.name)
     }
-    .font(.system(size: 10))
-    .padding()
   }
 }
 
@@ -92,12 +86,14 @@ private struct PersonAgeView: View {
     if #available(iOS 15.0, *) {
       let _ = Self._printChanges()
     }
-    Text("\(person.age)")
-      .background(Color(
-        red: .random(in: 0 ... 1),
-        green: .random(in: 0 ... 1),
-        blue: .random(in: 0 ... 1)
-      ))
+    CardView("PersonAgeView") {
+      Text("\(person.age)")
+        .background(Color(
+          red: .random(in: 0 ... 1),
+          green: .random(in: 0 ... 1),
+          blue: .random(in: 0 ... 1)
+        ))
+    }
   }
 }
 
@@ -109,9 +105,7 @@ private struct StateView: View {
     if #available(iOS 15.0, *) {
       let _ = Self._printChanges()
     }
-    VStack {
-      Text("StateView")
-      Text(person.name)
+    CardView("StateView") {
       Text("\(person.age)")
         .background(Color(
           red: .random(in: 0 ... 1),

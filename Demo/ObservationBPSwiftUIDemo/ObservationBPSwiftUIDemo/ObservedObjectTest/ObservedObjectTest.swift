@@ -13,10 +13,13 @@ struct ObservedObjectTest: View {
 
   var body: some View {
     VStack {
-      Text("刷新 CounterView 计数 :\(count)")
-      Button("刷新") {
-        count += 1
+      VStack {
+        Text("刷新 CounterView 计数 :\(count)")
+        Button("刷新") {
+          count += 1
+        }
       }
+      .padding()
 
       CountView0State()
         .padding()
@@ -37,6 +40,7 @@ struct ObservedObjectTest: View {
           .padding()
       }
     }
+    .font(.system(size: 14))
   }
 }
 

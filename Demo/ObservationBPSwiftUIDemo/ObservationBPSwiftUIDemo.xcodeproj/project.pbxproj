@@ -16,6 +16,7 @@
 		E4DCE0AA2AE18B3600DDBBC9 /* DevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */; };
 		E4FDB4512AE1726900D755C3 /* ContentView_StateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDB4502AE1726900D755C3 /* ContentView_StateObject.swift */; };
 		E4FDB4572AE177C500D755C3 /* ContentView_ObservationBP.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FDB4562AE177C500D755C3 /* ContentView_ObservationBP.swift */; };
+		F7556FC62B1487AE0096FC47 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7556FC52B1487AE0096FC47 /* CardView.swift */; };
 		F791ABA72AE26D5B0008B7F5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F791ABA62AE26D5B0008B7F5 /* Models.swift */; };
 		F791ABA92AE26DFA0008B7F5 /* ModelsNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = F791ABA82AE26DFA0008B7F5 /* ModelsNative.swift */; };
 		F79817D82AEF9236008A7E34 /* RefreshableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */; };
@@ -64,6 +65,7 @@
 		E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevView.swift; sourceTree = "<group>"; };
 		E4FDB4502AE1726900D755C3 /* ContentView_StateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_StateObject.swift; sourceTree = "<group>"; };
 		E4FDB4562AE177C500D755C3 /* ContentView_ObservationBP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView_ObservationBP.swift; sourceTree = "<group>"; };
+		F7556FC52B1487AE0096FC47 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F791ABA62AE26D5B0008B7F5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F791ABA82AE26DFA0008B7F5 /* ModelsNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsNative.swift; sourceTree = "<group>"; };
 		F79817D62AEF9213008A7E34 /* ObservationBP */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ObservationBP; path = ../..; sourceTree = "<group>"; };
@@ -140,12 +142,13 @@
 				E4FDB4502AE1726900D755C3 /* ContentView_StateObject.swift */,
 				F79817D72AEF9236008A7E34 /* RefreshableScrollView.swift */,
 				E4DCE0A92AE18B3600DDBBC9 /* DevView.swift */,
+				F7556FC52B1487AE0096FC47 /* CardView.swift */,
+				F7F2FA3E2AF3819E00C258D4 /* LazyView.swift */,
 				F7F61B352B0220A900F7CF61 /* CompareDemo */,
 				F7F61B322B02136000F7CF61 /* ObservedObjectTest */,
 				F79817D92AEF93B1008A7E34 /* RrefreshScrollTestView.swift */,
 				D17280222A7C010900CDC50B /* Assets.xcassets */,
 				D17280242A7C010900CDC50B /* Preview Content */,
-				F7F2FA3E2AF3819E00C258D4 /* LazyView.swift */,
 				F7F61B2B2B02030C00F7CF61 /* Test */,
 			);
 			path = ObservationBPSwiftUIDemo;
@@ -353,6 +356,7 @@
 				F7F61B2D2B02031D00F7CF61 /* PublishedObject.swift in Sources */,
 				F7F61B2A2B02019900F7CF61 /* CustomStateObject.swift in Sources */,
 				E4FDB4572AE177C500D755C3 /* ContentView_ObservationBP.swift in Sources */,
+				F7556FC62B1487AE0096FC47 /* CardView.swift in Sources */,
 				F7F61B342B02136A00F7CF61 /* ObservedObjectTestModel17.swift in Sources */,
 				F7F2FA442AF39D2900C258D4 /* ObservedObjectTest.swift in Sources */,
 				F791ABA72AE26D5B0008B7F5 /* Models.swift in Sources */,

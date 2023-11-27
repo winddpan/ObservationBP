@@ -42,15 +42,18 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
   }
 
   public func update() {
+    if state.dirty {
+      DispatchQueue.main.async {
+        state.dirty = false
+      }
+    }
+
     let observableObject = _value.observableObject
     let tracker = observableObject.tracker(of: uuid)
     let emitterWrapper = _emitter
     tracker.open(observableObject) { [weak state] in
       state?.dirty = true
       emitterWrapper.wrappedValue.objectWillChange.send(())
-      DispatchQueue.main.async {
-        state?.dirty = false
-      }
     }
   }
 }
