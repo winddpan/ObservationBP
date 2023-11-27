@@ -42,7 +42,7 @@ struct ContentView_Observation: View {
 //            }
 //
       VStack {
-//        PersonNameView(person: .init(name: person.name, age: 1))
+        PersonNameView(person: .init(name: person.name, age: 1))
         PersonAgeView(person: person)
       }
       .padding()
@@ -61,7 +61,7 @@ struct ContentView_Observation: View {
 
 @available(iOS 17.0, *)
 private struct PersonNameView: View {
-  var person: Person17
+  @State var person: Person17
   @State private var clz = Clz17(name: Date().description)
 
   var body: some View {
