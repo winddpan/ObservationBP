@@ -53,7 +53,9 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
     let emitterWrapper = _emitter
     tracker.open(observableObject) { [weak state] in
       state?.dirty = true
-      emitterWrapper.wrappedValue.objectWillChange.send(())
+      DispatchQueue.main.async {
+        emitterWrapper.wrappedValue.objectWillChange.send(())
+      }
     }
   }
 }
