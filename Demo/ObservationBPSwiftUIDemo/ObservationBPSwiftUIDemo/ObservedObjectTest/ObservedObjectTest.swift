@@ -73,7 +73,7 @@ class StateObjectClass: ObservableObject {
 }
 
 struct CountView0State: View {
-  @StateObserving var state = ObservableClass(type: "@StateObserving")
+  @XObserving @State var state = ObservableClass(type: "@StateObserving")
 
   var body: some View {
     VStack {

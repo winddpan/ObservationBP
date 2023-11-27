@@ -61,7 +61,7 @@ struct ContentView_Observation: View {
 
 @available(iOS 17.0, *)
 private struct PersonNameView: View {
-  @State var person: Person17
+  var person: Person17
   @State private var clz = Clz17(name: Date().description)
 
   var body: some View {

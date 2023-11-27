@@ -9,7 +9,7 @@ import ObservationBP
 import SwiftUI
 
 struct ContentView_ObservationBP: View {
-  @Observing private var person = Person(name: "Tom", age: 12)
+  @XObserving @State private var person = Person(name: "Tom", age: 12)
   @State private var randomColor = Color(
     red: .random(in: 0 ... 1),
     green: .random(in: 0 ... 1),
@@ -50,6 +50,7 @@ struct ContentView_ObservationBP: View {
       VStack {
         PersonNameView(person: .init(name: person.name, age: 1))
         PersonAgeView(person: person)
+        StateView()
       }
       .padding()
 
@@ -97,6 +98,28 @@ private struct PersonAgeView: View {
         green: .random(in: 0 ... 1),
         blue: .random(in: 0 ... 1)
       ))
+  }
+}
+
+private struct StateView: View {
+  @XObserving @State var person: Person = .init(name: Date().description, age: Int(Date().timeIntervalSince1970))
+  @State private var clz = Clz(name: Date().description)
+
+  var body: some View {
+    if #available(iOS 15.0, *) {
+      let _ = Self._printChanges()
+    }
+    VStack {
+      Text("StateView")
+      Text(person.name)
+      Text("\(person.age)")
+        .background(Color(
+          red: .random(in: 0 ... 1),
+          green: .random(in: 0 ... 1),
+          blue: .random(in: 0 ... 1)
+        ))
+      Text(clz.name)
+    }
   }
 }
 
