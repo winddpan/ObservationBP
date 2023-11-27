@@ -9,7 +9,7 @@ import ObservationBP
 import SwiftUI
 
 struct ContentView_ObservationBP: View {
-  @XObserving @State private var person = Person(name: "Tom", age: 12)
+  @Observing @State private var person = Person(name: "Tom", age: 12)
   @State private var randomColor = Color(
     red: .random(in: 0 ... 1),
     green: .random(in: 0 ... 1),
@@ -25,27 +25,27 @@ struct ContentView_ObservationBP: View {
       let _ = Self._printChanges()
     }
     VStack {
-//      Text(person.name)
-//      Text("\(person.age)")
-//      Text(person.list.description)
-//
-//      LazyView {
-//        VStack {
-//          Text("(lazy)" + person.name)
-//            .background(Color(
-//              red: .random(in: 0 ... 1),
-//              green: .random(in: 0 ... 1),
-//              blue: .random(in: 0 ... 1)
-//            ))
-//
-//          Text("(lazy)" + "\(person.age)")
-//            .background(Color(
-//              red: .random(in: 0 ... 1),
-//              green: .random(in: 0 ... 1),
-//              blue: .random(in: 0 ... 1)
-//            ))
-//        }
-//      }
+      Text(person.name)
+      Text("\(person.age)")
+      Text(person.list.description)
+
+      LazyView {
+        VStack {
+          Text("(lazy)" + person.name)
+            .background(Color(
+              red: .random(in: 0 ... 1),
+              green: .random(in: 0 ... 1),
+              blue: .random(in: 0 ... 1)
+            ))
+
+          Text("(lazy)" + "\(person.age)")
+            .background(Color(
+              red: .random(in: 0 ... 1),
+              green: .random(in: 0 ... 1),
+              blue: .random(in: 0 ... 1)
+            ))
+        }
+      }
 
       VStack {
         PersonNameView(person: .init(name: person.name, age: 1))
@@ -102,7 +102,7 @@ private struct PersonAgeView: View {
 }
 
 private struct StateView: View {
-  @XObserving @State var person: Person = .init(name: Date().description, age: Int(Date().timeIntervalSince1970))
+  @Observing @State var person: Person = .init(name: Date().description, age: Int(Date().timeIntervalSince1970))
   @State private var clz = Clz(name: Date().description)
 
   var body: some View {

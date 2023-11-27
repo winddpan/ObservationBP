@@ -1,4 +1,3 @@
-import Combine
 import Foundation
 import ObservationBPLock
 
@@ -113,20 +112,6 @@ final class Tracker {
 
     trackingPtr.pointee.entries[registrar.context.id]?.properties.remove(allRespondedKeyPath)
   }
-}
-
-final class Container<Value: AnyObject> {
-  var value: Value
-  var firstGet = false
-  var dirty = false
-
-  init(value: Value) {
-    self.value = value
-  }
-}
-
-final class Emitter: ObservableObject {
-  let objectWillChange = PassthroughSubject<Void, Never>()
 }
 
 private var trackerKey: UInt = 0
