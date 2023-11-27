@@ -13,10 +13,16 @@ struct ObservedObjectTest: View {
 
   var body: some View {
     VStack {
-      Text("刷新 CounterView 计数 :\(count)")
-      Button("刷新") {
-        count += 1
+      VStack {
+        Text("刷新 CounterView 计数 :\(count)")
+        Button("刷新") {
+          count += 1
+        }
       }
+      .padding()
+
+      CountView0State()
+        .padding()
 
       CountView1State()
         .padding()
@@ -34,6 +40,7 @@ struct ObservedObjectTest: View {
           .padding()
       }
     }
+    .font(.system(size: 14))
   }
 }
 
@@ -69,12 +76,25 @@ class StateObjectClass: ObservableObject {
   }
 }
 
+struct CountView0State: View {
+  @Observing @State var state = ObservableClass(type: "@Observing @State")
+
+  var body: some View {
+    VStack {
+      Text("@Observing @State :\(state.count)")
+      Button("+1") {
+        state.count += 1
+      }
+    }
+  }
+}
+
 struct CountView1State: View {
   @Observing var state = ObservableClass(type: "@Observing")
 
   var body: some View {
     VStack {
-      Text("@Observing count :\(state.count)")
+      Text("@Observing :\(state.count)")
       Button("+1") {
         state.count += 1
       }
@@ -87,7 +107,7 @@ struct CountView2State: View {
 
   var body: some View {
     VStack {
-      Text("@StateObject count :\(state.count)")
+      Text("@StateObject :\(state.count)")
       Button("+1") {
         state.count += 1
       }
@@ -100,7 +120,7 @@ struct CountView3State: View {
 
   var body: some View {
     VStack {
-      Text("@ObservedObject count :\(state.count)")
+      Text("@ObservedObject :\(state.count)")
       Button("+1") {
         state.count += 1
       }
@@ -114,7 +134,7 @@ struct CountView4State: View {
 
   var body: some View {
     VStack {
-      Text("iOS17 @State @Observation count :\(state.count)")
+      Text("iOS17 @State @Observation :\(state.count)")
       Button("+1") {
         state.count += 1
       }
@@ -128,7 +148,7 @@ struct CountView5State: View {
 
   var body: some View {
     VStack {
-      Text("iOS17 @Observation count :\(state.count)")
+      Text("iOS17 @Observation :\(state.count)")
       Button("+1") {
         state.count += 1
       }

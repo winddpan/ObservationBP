@@ -1,48 +1,25 @@
-//
-//  Observing.swift
-//
-//  Created by wp on 2023/11/2.
-//
-
 import Combine
 import Foundation
 import SwiftUI
 
 @propertyWrapper
-public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
-  // instance keep  https://gist.github.com/Amzd/8f0d4d94fcbb6c9548e7cf0c1493eaff
-  @State private var container = Container<Value>()
+public struct Observing<T: ObservableUnwrap>: DynamicProperty {
+  private var _value: T
+  private let state = ObservingState()
   @ObservedObject private var emitter = Emitter()
-  private let thunk: () -> Value
+  @State private var uuid = UUID()
 
   @MainActor
-  public var wrappedValue: Value {
+  public var wrappedValue: T {
     set {
-      container.value = newValue
-      let emitterWrapper = _emitter
-      DispatchQueue.main.async {
-        emitterWrapper.wrappedValue.objectWillChange.send(())
-      }
+      _value = newValue
+      emitter.objectWillChange.send(())
     }
     get {
-      if !container.firstGet {
-        container.firstGet = true
+      if !state.firstGet {
+        state.firstGet = true
       }
-      if container.value == nil {
-        container.value = thunk()
-      }
-      if !container.tracker.isOpening {
-        let emitterWrapper = _emitter
-        container.tracker.open(container.value!) { [weak container] in
-          if let container {
-            container.dirty = true
-            DispatchQueue.main.async {
-              emitterWrapper.wrappedValue.objectWillChange.send(())
-            }
-          }
-        }
-      }
-      return container.value!
+      return _value
     }
   }
 
@@ -51,46 +28,59 @@ public struct Observing<Value: AnyObject & Observable>: DynamicProperty {
     return Bindable(observing: self)
   }
 
-  public init(wrappedValue: @autoclosure @escaping () -> Value) {
-    thunk = wrappedValue
+  public init<Value: Observable>(stateValue: Value) where T == State<Value> {
+    let value = State(initialValue: stateValue)
+    _value = value
+  }
+
+  public init<Value: Observable>(wrappedValue: T) where T == State<Value> {
+    _value = wrappedValue
+  }
+
+  public init(wrappedValue: T) where T: Observable {
+    _value = wrappedValue
   }
 
   public func update() {
-    if container.dirty {
+    if state.dirty {
       DispatchQueue.main.async {
-        container.dirty = false
+        state.dirty = false
       }
+    }
+
+    let observableObject = _value.observableObject
+    let tracker = observableObject.tracker(of: uuid)
+    let emitterWrapper = _emitter
+    tracker.open(observableObject) { [weak state] in
+      state?.dirty = true
+      emitterWrapper.wrappedValue.objectWillChange.send(())
     }
   }
 }
 
-private final class Emitter: ObservableObject {
-  let objectWillChange = PassthroughSubject<Void, Never>()
-}
-
 extension Observing: Equatable {
-  public static func == (lhs: Observing<Value>, rhs: Observing<Value>) -> Bool {
-    if lhs.container.dirty || rhs.container.dirty {
+  public static func == (lhs: Observing<T>, rhs: Observing<T>) -> Bool {
+    if lhs.state.dirty || rhs.state.dirty {
       return false
     }
-    if !lhs.container.firstGet || !rhs.container.firstGet {
+    if lhs._value.observableObject === rhs._value.observableObject {
       return true
     }
-    return lhs.container.value === rhs.container.value
+    return false
   }
 }
 
 public extension Observing {
   @dynamicMemberLookup
   struct Bindable {
-    private let observing: Observing<Value>
+    private let observing: Observing<T>
 
-    fileprivate init(observing: Observing<Value>) {
+    fileprivate init(observing: Observing<T>) {
       self.observing = observing
     }
 
     @MainActor
-    public subscript<V>(dynamicMember keyPath: ReferenceWritableKeyPath<Value, V>) -> Binding<V> {
+    public subscript<V>(dynamicMember keyPath: ReferenceWritableKeyPath<T, V>) -> Binding<V> {
       Binding {
         observing.wrappedValue[keyPath: keyPath]
       } set: { newValue in
@@ -100,9 +90,11 @@ public extension Observing {
   }
 }
 
-private final class Container<Value: AnyObject> {
-  var value: Value?
+private final class ObservingState {
   var firstGet = false
   var dirty = false
-  let tracker = Tracker()
+}
+
+private final class Emitter: ObservableObject {
+  let objectWillChange = PassthroughSubject<Void, Never>()
 }

@@ -11,8 +11,6 @@
 
 import SwiftUI
 
-public protocol Observable {}
-
 #if $Macros && hasAttribute(attached)
 
 /// Defines and implements conformance of the Observable protocol.

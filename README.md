@@ -17,7 +17,7 @@ import SwiftUI
 }
 
 struct ContentView: View {
-    @Observing var person: Person = Person(name: "name", age: 1)
+    @Observing @State var person: Person = Person(name: "name", age: 1)
 
     var body: some View {
         VStack {
@@ -67,3 +67,9 @@ Swift Package Manager
     * Use `@Observing` once in each View
 * Instance kept, similar to `@State` and `@StateObject`.
 * Memory leak fixed.
+
+## Usage
+| Observation                                      | ObservationBP                                               |
+| ------------------------------------------------ | ----------------------------------------------------------- |
+| var person: Person                               | @Observing var person: Person                               |
+| @State var person = Person(name: "name", age: 1) | @Observing @State var person = Person(name: "name", age: 1) |

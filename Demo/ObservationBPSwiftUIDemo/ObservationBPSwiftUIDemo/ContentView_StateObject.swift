@@ -62,7 +62,7 @@ struct ContentView_StateObject: View {
 
 private struct PersonNameView: View {
     @StateObject private var person: Person13
-    // private var clz = Clz(name: UUID().uuidString.components(separatedBy: "-")[0])
+    private var clz = Clz(name: Date().description)
 
     fileprivate init(person: Person13) {
         _person = .init(wrappedValue: person)
@@ -74,7 +74,7 @@ private struct PersonNameView: View {
         }
         VStack {
             Text(person.name)
-            // Text(clz.name)
+            Text(clz.name)
         }
     }
 }
