@@ -56,7 +56,7 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
       }
     }
 
-    if let observableObject = _value.observableObject {
+    if let observableObject = _observableObject {
       let tracker = observableObject.tracker(of: uuid)
       let emitterWrapper = _emitter
       tracker.open(observableObject) { [weak state] in
@@ -67,6 +67,10 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
       }
     }
   }
+
+  private var _observableObject: Observable? {
+    (container.value ?? _value).observableObject
+  }
 }
 
 extension Observing: Equatable {
@@ -74,7 +78,7 @@ extension Observing: Equatable {
     if lhs.state.dirty || rhs.state.dirty {
       return false
     }
-    if lhs._value.observableObject === rhs._value.observableObject {
+    if lhs._observableObject === rhs._observableObject {
       return true
     }
     return false
