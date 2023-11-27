@@ -6,20 +6,21 @@ import SwiftUI
 public struct Observing<T: ObservableUnwrap>: DynamicProperty {
   private var _value: T
   private let state = ObservingState()
+  private let container = Container<T>()
   @ObservedObject private var emitter = Emitter()
   @State private var uuid = UUID()
 
   @MainActor
   public var wrappedValue: T {
-    set {
-      _value = newValue
+    nonmutating set {
+      container.value = newValue
       emitter.objectWillChange.send(())
     }
     get {
       if !state.firstGet {
         state.firstGet = true
       }
-      return _value
+      return container.value ?? _value
     }
   }
 
@@ -29,11 +30,18 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
   }
 
   public init<Value: Observable>(stateValue: Value) where T == State<Value> {
-    let value = State(initialValue: stateValue)
-    _value = value
+    _value = State(initialValue: stateValue)
   }
 
   public init<Value: Observable>(wrappedValue: T) where T == State<Value> {
+    _value = wrappedValue
+  }
+
+  public init<Value: Observable>(wrappedValue: T) where T == State<Value?> {
+    _value = wrappedValue
+  }
+
+  public init<Value: Observable>(wrappedValue: T) where T == Value? {
     _value = wrappedValue
   }
 
@@ -48,13 +56,14 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
       }
     }
 
-    let observableObject = _value.observableObject
-    let tracker = observableObject.tracker(of: uuid)
-    let emitterWrapper = _emitter
-    tracker.open(observableObject) { [weak state] in
-      state?.dirty = true
-      DispatchQueue.main.async {
-        emitterWrapper.wrappedValue.objectWillChange.send(())
+    if let observableObject = _value.observableObject {
+      let tracker = observableObject.tracker(of: uuid)
+      let emitterWrapper = _emitter
+      tracker.open(observableObject) { [weak state] in
+        state?.dirty = true
+        DispatchQueue.main.async {
+          emitterWrapper.wrappedValue.objectWillChange.send(())
+        }
       }
     }
   }
@@ -90,6 +99,10 @@ public extension Observing {
       }
     }
   }
+}
+
+private final class Container<Value> {
+  var value: Value?
 }
 
 private final class ObservingState {

@@ -4,17 +4,23 @@ import SwiftUI
 public protocol Observable: ObservableUnwrap & AnyObject {}
 
 public protocol ObservableUnwrap {
-  var observableObject: Observable { get }
+  var observableObject: Observable? { get }
 }
 
-extension Observable {
-  public var observableObject: Observable {
+public extension Observable {
+  var observableObject: Observable? {
     self
   }
 }
 
-extension State: ObservableUnwrap where Value: Observable {
-  public var observableObject: Observable {
-    wrappedValue
+extension State: ObservableUnwrap where Value: ObservableUnwrap {
+  public var observableObject: Observable? {
+    wrappedValue.observableObject
+  }
+}
+
+extension Optional: ObservableUnwrap where Wrapped: Observable {
+  public var observableObject: Observable? {
+    self
   }
 }

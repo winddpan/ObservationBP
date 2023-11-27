@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView_ObservationBP: View {
   @Observing @State private var person = Person(name: "Tom", age: 12)
+  @Observing private var person2: Person?
+  @Observing @State private var person3: Person?
 
   init() {
     print("init!")
@@ -24,6 +26,8 @@ struct ContentView_ObservationBP: View {
         Text(person.name)
         Text("\(person.age)")
         Text(person.list.description)
+//        Text(person2?.name ?? "null person2 name!")
+        Text(person3?.name ?? "null person3 name!")
       }
 
       CardView("LazyView") {
@@ -57,6 +61,10 @@ struct ContentView_ObservationBP: View {
         Button("-") { person.age -= 1 }
         Button("name") { person.name += "@" }
         Button("list") { person.list = person.list.shuffled() }
+        Button("person2/3") {
+          self.person2 = Person(name: "person2\(Int.random(in: 1 ... 100))", age: Int.random(in: 1 ... 100))
+          self.person3 = Person(name: "person3\(Int.random(in: 1 ... 100))", age: Int.random(in: 1 ... 100))
+        }
       }
     }
     .padding()
