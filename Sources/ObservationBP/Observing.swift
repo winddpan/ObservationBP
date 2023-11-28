@@ -68,7 +68,7 @@ public struct Observing<T: ObservableUnwrap>: DynamicProperty {
     }
   }
 
-  private var _observableObject: Observable? {
+  private var _observableObject: (any Observable)? {
     (container.value ?? _value).observableObject
   }
 }
@@ -95,11 +95,11 @@ public extension Observing {
     }
 
     @MainActor
-    public subscript<V>(dynamicMember keyPath: ReferenceWritableKeyPath<T, V>) -> Binding<V> {
+    public subscript<V>(dynamicMember keyPath: ReferenceWritableKeyPath<T.Object, V>) -> Binding<V> {
       Binding {
-        observing.wrappedValue[keyPath: keyPath]
+        observing.wrappedValue.observableObject![keyPath: keyPath]
       } set: { newValue in
-        observing.wrappedValue[keyPath: keyPath] = newValue
+        observing.wrappedValue.observableObject![keyPath: keyPath] = newValue
       }
     }
   }

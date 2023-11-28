@@ -23,6 +23,8 @@ struct ContentView_ObservationBP: View {
     }
     VStack {
       CardView("RootView") {
+        TextField("name", text: $person.name)
+          
         Text(person.name)
         Text("\(person.age)")
         Text(person.list.description)
