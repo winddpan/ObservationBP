@@ -1,0 +1,4 @@
+framework module ObservationBPLock {
+  header "ObservationBPLock-Swift.h"
+  requires objc
+}

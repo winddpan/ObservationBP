@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		lb+wvFQjUm0lKd0rbj73E+1qXRo=
+		tRDJOozuk1+ka5F+RphDAGbwmlQ=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -22,7 +22,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			X7RBba4Znvppy87AaNUjtvFVw+gZdnKH9MjDfz9WGls=
+			rR4MM/ee6ejJF2l53wLyZVq47PtkLS8QdOebrm5wUYw=
 			</data>
 		</dict>
 		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-macos.private.swiftinterface</key>
@@ -50,14 +50,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZIy2hp6rBDr4rWIsfqbR3w5HxqfdZ4N46F6h/UNeWk4=
+			9QlZYzM9O5GQKrvL3VdJ26+yL6RAcOGk2wcRpiRVm/U=
 			</data>
 		</dict>
 		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-macos.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			X7RBba4Znvppy87AaNUjtvFVw+gZdnKH9MjDfz9WGls=
+			rR4MM/ee6ejJF2l53wLyZVq47PtkLS8QdOebrm5wUYw=
 			</data>
 		</dict>
 		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-macos.private.swiftinterface</key>
@@ -85,7 +85,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			VF0VRvSJR82F1IPJTGBIZg6AwmuaZT14ZwEWOfC+SPc=
+			BwgOHTdoZb6BpVfi/h9Rc3WqEHPRGWvvuu/Y/M8noQM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -99,7 +99,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			t+eW9os6car4XQtp5JTOSRlLtJ5XxOe7BON3iyULxLE=
+			/s3+mDglkfX9/XzwRhfQ1cvyI7pm2wZBAVJlqQSLCSU=
 			</data>
 		</dict>
 	</dict>
