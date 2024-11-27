@@ -10,47 +10,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ANjjYENBF0P7vIwZUSal6BVsJFk=
+		5NZKX4I/dlagHWf1cvm/q3TNW7A=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<data>
 		Gb+jKucW1GZV+85NZdWQLXhdnto=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
-		l0fbHW5FqfD2+Jl13D2/fkDDCQo=
+		8uZduebGlAIajtlLwKm+F8CqV/4=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<data>
-		TCLzTs8UiK9yzA6YRvYtfVHWjuE=
+		SGSMmHXMMikhp/NhbGLGpuFi/e0=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		l0fbHW5FqfD2+Jl13D2/fkDDCQo=
+		8uZduebGlAIajtlLwKm+F8CqV/4=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		sje8uzvvrcmXVUVGbIIcvIIfQ78=
+		wSYMb4jvxgChYiPcpQIB3vLqRVw=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<data>
 		Gb+jKucW1GZV+85NZdWQLXhdnto=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<data>
-		fCsJujYlD8YKyeCb2Su5GZNxF3s=
+		lVmqlR0cFJ433rUOPpEg4UbCbts=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<data>
-		8xS/d9QCnRC/6JtkcBA0L8fpJig=
+		V/6ANmEP+5TVKvSjIoxPniSUETM=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<data>
-		fCsJujYlD8YKyeCb2Su5GZNxF3s=
+		lVmqlR0cFJ433rUOPpEg4UbCbts=
 		</data>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<data>
-		P7SvTn9C7NBl559YCrnY+zPMpyI=
+		mzSFhfVg2oD+Otm9BvUWDgc6OhM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -66,74 +66,74 @@
 			kp9eIbuy+F1a5gQ5Z1lJiPOGfM+ajbxTtnURsiBF+Wo=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			rR4MM/ee6ejJF2l53wLyZVq47PtkLS8QdOebrm5wUYw=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QOBVrHPcyblJSkH+rn/ndAn0L9e7qiITlhXLqInUapE=
+			mqRTKD2+f04L8rvV6G2q4ZYcgH52DPStpIIaBQ5Ds1o=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2vGs+7UiW7HnCOsl+0vlGBawPyaWazqS6Cnqz73Mldc=
+			vi++NmLBwrRFTCRFJ1Vf9t3P5k96ajVNgwRpEyZOFF4=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QOBVrHPcyblJSkH+rn/ndAn0L9e7qiITlhXLqInUapE=
+			mqRTKD2+f04L8rvV6G2q4ZYcgH52DPStpIIaBQ5Ds1o=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/ObservationBPLock.swiftmodule/arm64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			R3s+YCTugdmOxPwVQAOYLoCKC13x7Ss0IsHMXqqBET0=
+			hciOc2qvMN3ZW01ExT0nCq1jYRrNUQ8BfDS23l6OHQ4=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			rR4MM/ee6ejJF2l53wLyZVq47PtkLS8QdOebrm5wUYw=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			z34SGxj31A+xGvfEWzBhZ3v8nIlPLeMaA+foCRSqxog=
+			mFX7k/Pzg2OwoQ8MfFodJYNaEHps9DZCZHL2qFMwaH0=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kG4MxXinNfSyXoUj39WgCjcV7hTTHwDRZ9ogR6pb9K0=
+			RQ7UuVU0zgCue4W58ocqF9YSv4dgFtzxHrcKtfhIEjM=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			z34SGxj31A+xGvfEWzBhZ3v8nIlPLeMaA+foCRSqxog=
+			mFX7k/Pzg2OwoQ8MfFodJYNaEHps9DZCZHL2qFMwaH0=
 			</data>
 		</dict>
-		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/ObservationBPLock.swiftmodule/x86_64-apple-tvos-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			md+QHhEqC8KCej4HLUjAJErZR7j01WXsQJ5VfOSdp7s=
+			0invX5YZD4pXsEhQ3SVFSVIDTKqlfU0z+QmHsmdBrGU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
